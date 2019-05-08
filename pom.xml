@@ -31,6 +31,8 @@
 		<cglib.version>3.2.10</cglib.version>
 		<!-- RUNTIME-COMPILER version -->
 		<runtime-compiler.version>1.2</runtime-compiler.version>
+		<!-- COMMONS-LANG3 version -->
+		<commons-lang3.version>3.9</commons-lang3.version>
 	</properties>
 
 	<licenses>
@@ -77,7 +79,12 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jobj-contract-verifier</artifactId>
 				<version>${jobj-contract-verifier.version}</version>
-				<scope>test</scope>
+			</dependency>
+			<!-- COMMONS-LANG3 DEPENDENCY -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
 			</dependency>
 
 		</dependencies>
@@ -91,7 +98,6 @@
 			<artifactId>jobj-contract-verifier</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- TEST-OBJECTS DEPENDENCY -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
@@ -111,6 +117,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- COMMONS-LANG3 DEPENDENCY -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
-	
+
 </project>
