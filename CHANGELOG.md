@@ -4,6 +4,10 @@
 Version 1.1-SNAPSHOT
 -------------
 
+CHANGED:
+
+- update of dependency jobj-contract-verifier version to 3.1.1
+
 Version 1
 -------------
 

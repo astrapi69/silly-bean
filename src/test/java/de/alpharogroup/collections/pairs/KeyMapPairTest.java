@@ -86,7 +86,7 @@ public class KeyMapPairTest
 	 * Test method for verify the contracts of {@link KeyMapPair#equals(Object)} ,
 	 * {@link KeyMapPair#hashCode()} and {@link KeyMapPair#toString()}
 	 */
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void verifyEqualsHashcodeAndToStringContracts()
 	{
 		ContractVerifier.of(KeyMapPair.class).verify();

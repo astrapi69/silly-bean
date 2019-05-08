@@ -95,7 +95,7 @@ public class ImmutableBoxTest
 	 * Test method for verify the contracts of {@link ImmutableBox#equals(Object)} ,
 	 * {@link ImmutableBox#hashCode()} and {@link ImmutableBox#toString()}
 	 */
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void verifyEqualsHashcodeAndToStringContracts()
 	{
 		ContractVerifier.of(ImmutableBox.class).verify();
