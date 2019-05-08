@@ -55,14 +55,14 @@ Than you can add the dependency to your dependencies:
 
 	<properties>
 			...
-		<!-- silly-beans version -->
-		<silly-beans.version>5.3</silly-beans.version>
+		<!-- SILLY-BEANS version -->
+		<silly-beans.version>1</silly-beans.version>
 			...
 	</properties>
 			...
 		<dependencies>
 			...
-			<!-- silly-beans DEPENDENCY -->
+			<!-- SILLY-BEANS DEPENDENCY -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>silly-beans</artifactId>
