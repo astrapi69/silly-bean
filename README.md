@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![Build Status](https://travis-ci.org/astrapi69/silly-beans.svg?branch=develop)](https://travis-ci.org/astrapi69/silly-beans) 
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/silly-beans/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/silly-beans?branch=develop) 
+[![Build Status](https://travis-ci.org/astrapi69/silly-beans.svg?branch=master)](https://travis-ci.org/astrapi69/silly-beans) 
+[![Coverage Status](https://coveralls.io/repos/github/astrapi69/silly-beans/badge.svg?branch=master)](https://coveralls.io/github/astrapi69/silly-beans?branch=master) 
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/silly-beans.svg?style=flat)](https://github.com/astrapi69/silly-beans/issues) 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/silly-beans/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/silly-beans)
 [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/silly-beans.svg)](http://www.javadoc.io/doc/de.alpharogroup/silly-beans)
@@ -100,7 +100,7 @@ Do not hesitate to contact the silly-beans developers with your questions, conce
 
 |**Travis CI**|
 |     :---:      |
-|[![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)](https://coveralls.io/github/astrapi69/silly-beans?branch=develop)|
+|[![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)](https://coveralls.io/github/astrapi69/silly-beans?branch=master)|
 |Special thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects|
 |     <img width=1000/>     |
 
@@ -112,7 +112,7 @@ Do not hesitate to contact the silly-beans developers with your questions, conce
 
 |**coveralls.io**|
 |     :---:      |
-|[![Coverage Status](https://coveralls.io/repos/github/astrapi69/silly-beans/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/silly-beans?branch=develop)|
+|[![Coverage Status](https://coveralls.io/repos/github/astrapi69/silly-beans/badge.svg?branch=master)](https://coveralls.io/github/astrapi69/silly-beans?branch=master)|
 |Special thanks to [coveralls.io](https://coveralls.io) for providing a free code coverage for open source projects|
 |     <img width=1000/>     |
 
