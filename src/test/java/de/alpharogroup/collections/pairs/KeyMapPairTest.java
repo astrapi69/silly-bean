@@ -33,6 +33,7 @@ import org.meanbean.test.BeanTester;
 import org.testng.annotations.Test;
 
 import de.alpharogroup.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
+import de.alpharogroup.evaluate.object.verifier.ContractVerifier;
 import de.alpharogroup.test.objects.Customer;
 import de.alpharogroup.test.objects.Employee;
 import de.alpharogroup.test.objects.Person;
@@ -79,6 +80,16 @@ public class KeyMapPairTest
 			third, fourth);
 		expected = true;
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for verify the contracts of {@link KeyMapPair#equals(Object)} ,
+	 * {@link KeyMapPair#hashCode()} and {@link KeyMapPair#toString()}
+	 */
+	@Test(enabled = false)
+	public void verifyEqualsHashcodeAndToStringContracts()
+	{
+		ContractVerifier.of(KeyMapPair.class).verify();
 	}
 
 	/**

@@ -33,6 +33,7 @@ import org.testng.annotations.Test;
 import de.alpharogroup.evaluate.object.evaluators.EqualsEvaluator;
 import de.alpharogroup.evaluate.object.evaluators.HashcodeEvaluator;
 import de.alpharogroup.evaluate.object.evaluators.ToStringEvaluator;
+import de.alpharogroup.evaluate.object.verifier.ContractVerifier;
 
 /**
  * The unit test class for the class {@link ImmutableBox}.
@@ -88,6 +89,16 @@ public class ImmutableBoxTest
 	public void testImmutableBoxNullValue()
 	{
 		ImmutableBox.<Integer> builder().build();
+	}
+
+	/**
+	 * Test method for verify the contracts of {@link ImmutableBox#equals(Object)} ,
+	 * {@link ImmutableBox#hashCode()} and {@link ImmutableBox#toString()}
+	 */
+	@Test(enabled = false)
+	public void verifyEqualsHashcodeAndToStringContracts()
+	{
+		ContractVerifier.of(ImmutableBox.class).verify();
 	}
 
 	/**
