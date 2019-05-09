@@ -7,6 +7,7 @@ Version 1.1-SNAPSHOT
 CHANGED:
 
 - update of dependency jobj-contract-verifier version to 3.1.1
+- update of dependency test-objects version to 5.2
 
 Version 1
 -------------

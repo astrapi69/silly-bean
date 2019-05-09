@@ -26,11 +26,7 @@
 		<!-- SILLY-COLLECTIONS version -->
 		<silly-collections.version>5.2.1</silly-collections.version>
 		<!-- TEST-OBJECTS version -->
-		<test-objects.version>5.0.1</test-objects.version>
-		<!-- CGLIB version -->
-		<cglib.version>3.2.10</cglib.version>
-		<!-- RUNTIME-COMPILER version -->
-		<runtime-compiler.version>1.2</runtime-compiler.version>
+		<test-objects.version>5.2</test-objects.version>
 		<!-- COMMONS-LANG3 version -->
 		<commons-lang3.version>3.9</commons-lang3.version>
 	</properties>
