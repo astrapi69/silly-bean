@@ -3,6 +3,9 @@
 
 Version 1.1-SNAPSHOT
 -------------
+ADDED:
+ 
+- new enum created that express the modification state 
 
 CHANGED:
 
