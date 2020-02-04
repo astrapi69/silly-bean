@@ -33,81 +33,94 @@ import java.io.Serializable;
  * @param <T>
  *            The type of the value.
  */
-public class ValueBox<T> implements Serializable {
-	/**
-	 * The serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * The value.
-	 */
-	private T value;
-	
-	public static class ValueBoxBuilder<T> {
-		
+public class ValueBox<T> implements Serializable
+{
+	public static class ValueBoxBuilder<T>
+	{
+
 		private T value;
-		
-		ValueBoxBuilder() {
+
+		ValueBoxBuilder()
+		{
+		}
+
+		public ValueBox<T> build()
+		{
+			return new ValueBox<T>(value);
+		}
+
+		@Override
+		public String toString()
+		{
+			return "ValueBox.ValueBoxBuilder(value=" + this.value + ")";
 		}
 
 		/**
 		 * The value.
 		 */
-		public ValueBoxBuilder<T> value(final T value) {
+		public ValueBoxBuilder<T> value(final T value)
+		{
 			this.value = value;
 			return this;
 		}
-
-		public ValueBox<T> build() {
-			return new ValueBox<T>(value);
-		}
-
-		@Override
-		public String toString() {
-			return "ValueBox.ValueBoxBuilder(value=" + this.value + ")";
-		}
 	}
-	
-	public static <T> ValueBoxBuilder<T> builder() {
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public static <T> ValueBoxBuilder<T> builder()
+	{
 		return new ValueBoxBuilder<T>();
 	}
 
-	public ValueBoxBuilder<T> toBuilder() {
-		return new ValueBoxBuilder<T>().value(this.value);
-	}
-
 	/**
 	 * The value.
 	 */
-	public T getValue() {
-		return this.value;
+	private T value;
+
+	public ValueBox()
+	{
 	}
 
-	/**
-	 * The value.
-	 */
-	public void setValue(final T value) {
+	public ValueBox(final T value)
+	{
 		this.value = value;
 	}
 
-	@Override
-	public boolean equals(final Object o) {
-		if (o == this) return true;
-		if (!(o instanceof ValueBox)) return false;
-		final ValueBox<?> other = (ValueBox<?>) o;
-		if (!other.canEqual((Object) this)) return false;
-		final Object this$value = this.getValue();
-		final Object other$value = other.getValue();
-		if (this$value == null ? other$value != null : !this$value.equals(other$value)) return false;
-		return true;
-	}
-	
-	protected boolean canEqual(final Object other) {
+	protected boolean canEqual(final Object other)
+	{
 		return other instanceof ValueBox;
 	}
 
 	@Override
-	public int hashCode() {
+	public boolean equals(final Object o)
+	{
+		if (o == this)
+			return true;
+		if (!(o instanceof ValueBox))
+			return false;
+		final ValueBox<?> other = (ValueBox<?>)o;
+		if (!other.canEqual(this))
+			return false;
+		final Object this$value = this.getValue();
+		final Object other$value = other.getValue();
+		if (this$value == null ? other$value != null : !this$value.equals(other$value))
+			return false;
+		return true;
+	}
+
+	/**
+	 * The value.
+	 */
+	public T getValue()
+	{
+		return this.value;
+	}
+
+	@Override
+	public int hashCode()
+	{
 		final int PRIME = 59;
 		int result = 1;
 		final Object $value = this.getValue();
@@ -115,15 +128,22 @@ public class ValueBox<T> implements Serializable {
 		return result;
 	}
 
-	@Override
-	public String toString() {
-		return "ValueBox(value=" + this.getValue() + ")";
-	}
-	
-	public ValueBox() {
-	}
-	
-	public ValueBox(final T value) {
+	/**
+	 * The value.
+	 */
+	public void setValue(final T value)
+	{
 		this.value = value;
+	}
+
+	public ValueBoxBuilder<T> toBuilder()
+	{
+		return new ValueBoxBuilder<T>().value(this.value);
+	}
+
+	@Override
+	public String toString()
+	{
+		return "ValueBox(value=" + this.getValue() + ")";
 	}
 }

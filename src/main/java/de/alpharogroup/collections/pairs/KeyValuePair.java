@@ -43,11 +43,60 @@ import java.util.Properties;
  * @param <V>
  *            The generic type of the value
  */
-public final class KeyValuePair<K, V> implements Serializable {
+public final class KeyValuePair<K, V> implements Serializable
+{
+	public static class KeyValuePairBuilder<K, V>
+	{
+
+		private K key;
+
+		private V value;
+
+
+		KeyValuePairBuilder()
+		{
+		}
+
+		public KeyValuePair<K, V> build()
+		{
+			return new KeyValuePair<K, V>(key, value);
+		}
+
+		/**
+		 * The key.
+		 */
+		public KeyValuePairBuilder<K, V> key(final K key)
+		{
+			this.key = key;
+			return this;
+		}
+
+		@Override
+		public String toString()
+		{
+			return "KeyValuePair.KeyValuePairBuilder(key=" + this.key + ", value=" + this.value
+				+ ")";
+		}
+
+		/**
+		 * The value.
+		 */
+		public KeyValuePairBuilder<K, V> value(final V value)
+		{
+			this.value = value;
+			return this;
+		}
+	}
+
 	/**
 	 * The Constant serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	public static <K, V> KeyValuePairBuilder<K, V> builder()
+	{
+		return new KeyValuePairBuilder<K, V>();
+	}
 
 	/**
 	 * Transforms the given {@link Map} to a list of {@link KeyValuePair}'s.
@@ -60,10 +109,13 @@ public final class KeyValuePair<K, V> implements Serializable {
 	 *            the map
 	 * @return the new list with the {@link KeyValuePair}'s.
 	 */
-	public static <K, V> List<KeyValuePair<K, V>> toKeyValuePairs(final Map<K, V> map) {
+	public static <K, V> List<KeyValuePair<K, V>> toKeyValuePairs(final Map<K, V> map)
+	{
 		final List<KeyValuePair<K, V>> list = new ArrayList<>();
-		for (final Entry<K, V> entry : map.entrySet()) {
-			list.add(KeyValuePair.<K, V>builder().key(entry.getKey()).value(entry.getValue()).build());
+		for (final Entry<K, V> entry : map.entrySet())
+		{
+			list.add(
+				KeyValuePair.<K, V> builder().key(entry.getKey()).value(entry.getValue()).build());
 		}
 		return list;
 	}
@@ -75,14 +127,16 @@ public final class KeyValuePair<K, V> implements Serializable {
 	 *            the properties
 	 * @return the new list with the {@link KeyValuePair}'s.
 	 */
-	public static List<KeyValuePair<String, String>> toKeyValuePairs(final Properties properties) {
+	public static List<KeyValuePair<String, String>> toKeyValuePairs(final Properties properties)
+	{
 		final List<KeyValuePair<String, String>> list = new ArrayList<>();
-		for (final Entry<Object, Object> entry : properties.entrySet()) {
-			list.add(KeyValuePair.<String, String>builder().key((String) entry.getKey()).value((String) entry.getValue()).build());
+		for (final Entry<Object, Object> entry : properties.entrySet())
+		{
+			list.add(KeyValuePair.<String, String> builder().key((String)entry.getKey())
+				.value((String)entry.getValue()).build());
 		}
 		return list;
 	}
-
 	/**
 	 * Transforms the given {@link List} of {@link KeyValuePair}'s to a {@link Map}.
 	 *
@@ -94,9 +148,11 @@ public final class KeyValuePair<K, V> implements Serializable {
 	 *            the list
 	 * @return the new map.
 	 */
-	public static <K, V> Map<K, V> toMap(final Collection<KeyValuePair<K, V>> list) {
+	public static <K, V> Map<K, V> toMap(final Collection<KeyValuePair<K, V>> list)
+	{
 		final Map<K, V> map = new HashMap<>();
-		for (KeyValuePair<K, V> keyValuePair : list) {
+		for (KeyValuePair<K, V> keyValuePair : list)
+		{
 			map.put(keyValuePair.getKey(), keyValuePair.getValue());
 		}
 		return map;
@@ -106,99 +162,60 @@ public final class KeyValuePair<K, V> implements Serializable {
 	 * The key.
 	 */
 	private K key;
+
 	/**
 	 * The value.
 	 */
 	private V value;
-	
-	public static class KeyValuePairBuilder<K, V> {
-		
-		private K key;
-		
-		private V value;
 
-		
-		KeyValuePairBuilder() {
-		}
-
-		/**
-		 * The key.
-		 */
-		public KeyValuePairBuilder<K, V> key(final K key) {
-			this.key = key;
-			return this;
-		}
-
-		/**
-		 * The value.
-		 */
-		public KeyValuePairBuilder<K, V> value(final V value) {
-			this.value = value;
-			return this;
-		}
-		
-		public KeyValuePair<K, V> build() {
-			return new KeyValuePair<K, V>(key, value);
-		}
-
-		@Override
-		public String toString() {
-			return "KeyValuePair.KeyValuePairBuilder(key=" + this.key + ", value=" + this.value + ")";
-		}
+	public KeyValuePair()
+	{
 	}
-	
-	public static <K, V> KeyValuePairBuilder<K, V> builder() {
-		return new KeyValuePairBuilder<K, V>();
+
+	public KeyValuePair(final K key, final V value)
+	{
+		this.key = key;
+		this.value = value;
 	}
-	
-	public KeyValuePairBuilder<K, V> toBuilder() {
-		return new KeyValuePairBuilder<K, V>().key(this.key).value(this.value);
+
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (o == this)
+			return true;
+		if (!(o instanceof KeyValuePair))
+			return false;
+		final KeyValuePair<?, ?> other = (KeyValuePair<?, ?>)o;
+		final Object this$key = this.getKey();
+		final Object other$key = other.getKey();
+		if (this$key == null ? other$key != null : !this$key.equals(other$key))
+			return false;
+		final Object this$value = this.getValue();
+		final Object other$value = other.getValue();
+		if (this$value == null ? other$value != null : !this$value.equals(other$value))
+			return false;
+		return true;
 	}
 
 	/**
 	 * The key.
 	 */
-	public K getKey() {
+	public K getKey()
+	{
 		return this.key;
 	}
 
 	/**
 	 * The value.
 	 */
-	public V getValue() {
+	public V getValue()
+	{
 		return this.value;
 	}
 
-	/**
-	 * The key.
-	 */
-	public void setKey(final K key) {
-		this.key = key;
-	}
-
-	/**
-	 * The value.
-	 */
-	public void setValue(final V value) {
-		this.value = value;
-	}
-
 	@Override
-	public boolean equals(final Object o) {
-		if (o == this) return true;
-		if (!(o instanceof KeyValuePair)) return false;
-		final KeyValuePair<?, ?> other = (KeyValuePair<?, ?>) o;
-		final Object this$key = this.getKey();
-		final Object other$key = other.getKey();
-		if (this$key == null ? other$key != null : !this$key.equals(other$key)) return false;
-		final Object this$value = this.getValue();
-		final Object other$value = other.getValue();
-		if (this$value == null ? other$value != null : !this$value.equals(other$value)) return false;
-		return true;
-	}
-
-	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int PRIME = 59;
 		int result = 1;
 		final Object $key = this.getKey();
@@ -208,16 +225,30 @@ public final class KeyValuePair<K, V> implements Serializable {
 		return result;
 	}
 
-	@Override
-	public String toString() {
-		return "KeyValuePair(key=" + this.getKey() + ", value=" + this.getValue() + ")";
-	}
-	
-	public KeyValuePair() {
-	}
-	
-	public KeyValuePair(final K key, final V value) {
+	/**
+	 * The key.
+	 */
+	public void setKey(final K key)
+	{
 		this.key = key;
+	}
+
+	/**
+	 * The value.
+	 */
+	public void setValue(final V value)
+	{
 		this.value = value;
+	}
+
+	public KeyValuePairBuilder<K, V> toBuilder()
+	{
+		return new KeyValuePairBuilder<K, V>().key(this.key).value(this.value);
+	}
+
+	@Override
+	public String toString()
+	{
+		return "KeyValuePair(key=" + this.getKey() + ", value=" + this.getValue() + ")";
 	}
 }

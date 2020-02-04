@@ -38,12 +38,57 @@ import java.util.Map;
  * @param <MV>
  *            the generic type of the map value.
  */
-public final class KeyMapPair<K, MK, MV> implements Serializable {
+public final class KeyMapPair<K, MK, MV> implements Serializable
+{
+
+	public static class KeyMapPairBuilder<K, MK, MV>
+	{
+		private K key;
+		private Map<MK, MV> values;
+
+		KeyMapPairBuilder()
+		{
+		}
+
+		public KeyMapPair<K, MK, MV> build()
+		{
+			return new KeyMapPair<K, MK, MV>(key, values);
+		}
+
+		/**
+		 * The key.
+		 */
+		public KeyMapPairBuilder<K, MK, MV> key(final K key)
+		{
+			this.key = key;
+			return this;
+		}
+
+		@Override
+		public String toString()
+		{
+			return "KeyMapPair.KeyMapPairBuilder(key=" + this.key + ", values=" + this.values + ")";
+		}
+
+		/**
+		 * The map with the values.
+		 */
+		public KeyMapPairBuilder<K, MK, MV> values(final Map<MK, MV> values)
+		{
+			this.values = values;
+			return this;
+		}
+	}
 
 	/**
 	 * The Constant serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	public static <K, MK, MV> KeyMapPairBuilder<K, MK, MV> builder()
+	{
+		return new KeyMapPairBuilder<K, MK, MV>();
+	}
 
 	/**
 	 * The key.
@@ -55,91 +100,54 @@ public final class KeyMapPair<K, MK, MV> implements Serializable {
 	 */
 	private Map<MK, MV> values;
 
-	public static class KeyMapPairBuilder<K, MK, MV> {
-		private K key;
-		private Map<MK, MV> values;
-
-		KeyMapPairBuilder() {
-		}
-
-		/**
-		 * The key.
-		 */
-		public KeyMapPairBuilder<K, MK, MV> key(final K key) {
-			this.key = key;
-			return this;
-		}
-
-		/**
-		 * The map with the values.
-		 */
-		public KeyMapPairBuilder<K, MK, MV> values(final Map<MK, MV> values) {
-			this.values = values;
-			return this;
-		}
-
-		public KeyMapPair<K, MK, MV> build() {
-			return new KeyMapPair<K, MK, MV>(key, values);
-		}
-
-		@Override
-		public String toString() {
-			return "KeyMapPair.KeyMapPairBuilder(key=" + this.key + ", values=" + this.values + ")";
-		}
+	public KeyMapPair()
+	{
 	}
-	
-	public static <K, MK, MV> KeyMapPairBuilder<K, MK, MV> builder() {
-		return new KeyMapPairBuilder<K, MK, MV>();
+
+	public KeyMapPair(final K key, final Map<MK, MV> values)
+	{
+		this.key = key;
+		this.values = values;
 	}
-	
-	public KeyMapPairBuilder<K, MK, MV> toBuilder() {
-		return new KeyMapPairBuilder<K, MK, MV>().key(this.key).values(this.values);
+
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (o == this)
+			return true;
+		if (!(o instanceof KeyMapPair))
+			return false;
+		final KeyMapPair<?, ?, ?> other = (KeyMapPair<?, ?, ?>)o;
+		final Object this$key = this.getKey();
+		final Object other$key = other.getKey();
+		if (this$key == null ? other$key != null : !this$key.equals(other$key))
+			return false;
+		final Object this$values = this.getValues();
+		final Object other$values = other.getValues();
+		if (this$values == null ? other$values != null : !this$values.equals(other$values))
+			return false;
+		return true;
 	}
 
 	/**
 	 * The key.
 	 */
-	public K getKey() {
+	public K getKey()
+	{
 		return this.key;
 	}
 
 	/**
 	 * The map with the values.
 	 */
-	public Map<MK, MV> getValues() {
+	public Map<MK, MV> getValues()
+	{
 		return this.values;
 	}
 
-	/**
-	 * The key.
-	 */
-	public void setKey(final K key) {
-		this.key = key;
-	}
-
-	/**
-	 * The map with the values.
-	 */
-	public void setValues(final Map<MK, MV> values) {
-		this.values = values;
-	}
-
 	@Override
-	public boolean equals(final Object o) {
-		if (o == this) return true;
-		if (!(o instanceof KeyMapPair)) return false;
-		final KeyMapPair<?, ?, ?> other = (KeyMapPair<?, ?, ?>) o;
-		final Object this$key = this.getKey();
-		final Object other$key = other.getKey();
-		if (this$key == null ? other$key != null : !this$key.equals(other$key)) return false;
-		final Object this$values = this.getValues();
-		final Object other$values = other.getValues();
-		if (this$values == null ? other$values != null : !this$values.equals(other$values)) return false;
-		return true;
-	}
-
-	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int PRIME = 59;
 		int result = 1;
 		final Object $key = this.getKey();
@@ -149,16 +157,30 @@ public final class KeyMapPair<K, MK, MV> implements Serializable {
 		return result;
 	}
 
-	@Override
-	public String toString() {
-		return "KeyMapPair(key=" + this.getKey() + ", values=" + this.getValues() + ")";
-	}
-	
-	public KeyMapPair() {
-	}
-	
-	public KeyMapPair(final K key, final Map<MK, MV> values) {
+	/**
+	 * The key.
+	 */
+	public void setKey(final K key)
+	{
 		this.key = key;
+	}
+
+	/**
+	 * The map with the values.
+	 */
+	public void setValues(final Map<MK, MV> values)
+	{
 		this.values = values;
+	}
+
+	public KeyMapPairBuilder<K, MK, MV> toBuilder()
+	{
+		return new KeyMapPairBuilder<K, MK, MV>().key(this.key).values(this.values);
+	}
+
+	@Override
+	public String toString()
+	{
+		return "KeyMapPair(key=" + this.getKey() + ", values=" + this.getValues() + ")";
 	}
 }

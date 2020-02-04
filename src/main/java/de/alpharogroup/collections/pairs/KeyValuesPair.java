@@ -37,130 +37,144 @@ import java.util.Collection;
  * @param <V>
  *            The type of the values in the collection.
  */
-public final class KeyValuesPair<K, V> implements Serializable {
-	/**
-	 * The Constant serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * The key.
-	 */
-	private K key;
-	/**
-	 * The collection with the values.
-	 */
-	private Collection<V> values;
-	
-	public static class KeyValuesPairBuilder<K, V> {
-		
+public final class KeyValuesPair<K, V> implements Serializable
+{
+	public static class KeyValuesPairBuilder<K, V>
+	{
+
 		private K key;
-		
+
 		private java.util.ArrayList<V> values;
 
-		
-		KeyValuesPairBuilder() {
+
+		KeyValuesPairBuilder()
+		{
+		}
+
+		public KeyValuesPair<K, V> build()
+		{
+			java.util.Collection<V> values;
+			switch (this.values == null ? 0 : this.values.size())
+			{
+				case 0 :
+					values = java.util.Collections.emptyList();
+					break;
+				case 1 :
+					values = java.util.Collections.singletonList(this.values.get(0));
+					break;
+				default :
+					values = java.util.Collections
+						.unmodifiableList(new java.util.ArrayList<V>(this.values));
+			}
+			return new KeyValuesPair<K, V>(key, values);
+		}
+
+		public KeyValuesPairBuilder<K, V> clearValues()
+		{
+			if (this.values != null)
+				this.values.clear();
+			return this;
 		}
 
 		/**
 		 * The key.
 		 */
-		public KeyValuesPairBuilder<K, V> key(final K key) {
+		public KeyValuesPairBuilder<K, V> key(final K key)
+		{
 			this.key = key;
 			return this;
 		}
-		
-		public KeyValuesPairBuilder<K, V> value(final V value) {
-			if (this.values == null) this.values = new java.util.ArrayList<V>();
+
+		@Override
+		public String toString()
+		{
+			return "KeyValuesPair.KeyValuesPairBuilder(key=" + this.key + ", values=" + this.values
+				+ ")";
+		}
+
+		public KeyValuesPairBuilder<K, V> value(final V value)
+		{
+			if (this.values == null)
+				this.values = new java.util.ArrayList<V>();
 			this.values.add(value);
 			return this;
 		}
-		
-		public KeyValuesPairBuilder<K, V> values(final java.util.Collection<? extends V> values) {
-			if (this.values == null) this.values = new java.util.ArrayList<V>();
+
+		public KeyValuesPairBuilder<K, V> values(final java.util.Collection<? extends V> values)
+		{
+			if (this.values == null)
+				this.values = new java.util.ArrayList<V>();
 			this.values.addAll(values);
 			return this;
 		}
-		
-		public KeyValuesPairBuilder<K, V> clearValues() {
-			if (this.values != null) this.values.clear();
-			return this;
-		}
-		
-		public KeyValuesPair<K, V> build() {
-			java.util.Collection<V> values;
-			switch (this.values == null ? 0 : this.values.size()) {
-				case 0:
-					values = java.util.Collections.emptyList();
-					break;
-				case 1:
-					values = java.util.Collections.singletonList(this.values.get(0));
-					break;
-				default:
-					values = java.util.Collections.unmodifiableList(new java.util.ArrayList<V>(this.values));
-			}
-			return new KeyValuesPair<K, V>(key, values);
-		}
-
-		@Override
-		public String toString() {
-			return "KeyValuesPair.KeyValuesPairBuilder(key=" + this.key + ", values=" + this.values + ")";
-		}
 	}
-
-	public static <K, V> KeyValuesPairBuilder<K, V> builder() {
+	/**
+	 * The Constant serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
+	public static <K, V> KeyValuesPairBuilder<K, V> builder()
+	{
 		return new KeyValuesPairBuilder<K, V>();
-	}
-
-	public KeyValuesPairBuilder<K, V> toBuilder() {
-		final KeyValuesPairBuilder<K, V> builder = new KeyValuesPairBuilder<K, V>().key(this.key);
-		if (this.values != null) builder.values(this.values);
-		return builder;
 	}
 
 	/**
 	 * The key.
 	 */
-	public K getKey() {
+	private K key;
+
+	/**
+	 * The collection with the values.
+	 */
+	private Collection<V> values;
+
+	public KeyValuesPair()
+	{
+	}
+
+	public KeyValuesPair(final K key, final Collection<V> values)
+	{
+		this.key = key;
+		this.values = values;
+	}
+
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (o == this)
+			return true;
+		if (!(o instanceof KeyValuesPair))
+			return false;
+		final KeyValuesPair<?, ?> other = (KeyValuesPair<?, ?>)o;
+		final Object this$key = this.getKey();
+		final Object other$key = other.getKey();
+		if (this$key == null ? other$key != null : !this$key.equals(other$key))
+			return false;
+		final Object this$values = this.getValues();
+		final Object other$values = other.getValues();
+		if (this$values == null ? other$values != null : !this$values.equals(other$values))
+			return false;
+		return true;
+	}
+
+	/**
+	 * The key.
+	 */
+	public K getKey()
+	{
 		return this.key;
 	}
 
 	/**
 	 * The collection with the values.
 	 */
-	public Collection<V> getValues() {
+	public Collection<V> getValues()
+	{
 		return this.values;
 	}
 
-	/**
-	 * The key.
-	 */
-	public void setKey(final K key) {
-		this.key = key;
-	}
-
-	/**
-	 * The collection with the values.
-	 */
-	public void setValues(final Collection<V> values) {
-		this.values = values;
-	}
-
 	@Override
-	public boolean equals(final Object o) {
-		if (o == this) return true;
-		if (!(o instanceof KeyValuesPair)) return false;
-		final KeyValuesPair<?, ?> other = (KeyValuesPair<?, ?>) o;
-		final Object this$key = this.getKey();
-		final Object other$key = other.getKey();
-		if (this$key == null ? other$key != null : !this$key.equals(other$key)) return false;
-		final Object this$values = this.getValues();
-		final Object other$values = other.getValues();
-		if (this$values == null ? other$values != null : !this$values.equals(other$values)) return false;
-		return true;
-	}
-
-	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int PRIME = 59;
 		int result = 1;
 		final Object $key = this.getKey();
@@ -170,16 +184,33 @@ public final class KeyValuesPair<K, V> implements Serializable {
 		return result;
 	}
 
-	@Override
-	public String toString() {
-		return "KeyValuesPair(key=" + this.getKey() + ", values=" + this.getValues() + ")";
-	}
-	
-	public KeyValuesPair() {
-	}
-	
-	public KeyValuesPair(final K key, final Collection<V> values) {
+	/**
+	 * The key.
+	 */
+	public void setKey(final K key)
+	{
 		this.key = key;
+	}
+
+	/**
+	 * The collection with the values.
+	 */
+	public void setValues(final Collection<V> values)
+	{
 		this.values = values;
+	}
+
+	public KeyValuesPairBuilder<K, V> toBuilder()
+	{
+		final KeyValuesPairBuilder<K, V> builder = new KeyValuesPairBuilder<K, V>().key(this.key);
+		if (this.values != null)
+			builder.values(this.values);
+		return builder;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "KeyValuesPair(key=" + this.getKey() + ", values=" + this.getValues() + ")";
 	}
 }
