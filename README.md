@@ -56,7 +56,7 @@ Than you can add the dependency to your dependencies:
 	<properties>
 			...
 		<!-- SILLY-BEANS version -->
-		<silly-beans.version>1</silly-beans.version>
+		<silly-beans.version>1.1</silly-beans.version>
 			...
 	</properties>
 			...
@@ -71,6 +71,24 @@ Than you can add the dependency to your dependencies:
 			...
 		</dependencies>
 
+			
+## gradle dependency
+
+You can first define the version in the ext section and add than the following gradle dependency to your project `build.gradle` if you want to import the core functionality of silly-beans:
+
+```
+ext {
+			...
+    sillyBeansVersion = "1.1"
+			...
+}
+dependencies {
+			...
+implementation "de.alpharogroup:silly-beans:${sillyBeansVersion}"
+			...
+}
+```
+		
 ## Semantic Versioning
 
 The versions of silly-beans are maintained with the Simplified Semantic Versioning guidelines.

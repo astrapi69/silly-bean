@@ -26,16 +26,6 @@ package de.alpharogroup.collections.pairs;
 
 import java.io.Serializable;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-
 /**
  * The class {@link Pair} represents a pair of values with generic parameters for the values.
  *
@@ -45,26 +35,256 @@ import lombok.experimental.FieldDefaults;
  * @param <V>
  *            The generic type of the right content of this Pair.
  */
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(toBuilder = true)
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Pair<K, V> implements Serializable
 {
+
+	/**
+	 * The class {@link PairBuilder}.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <V>
+	 *            the value type
+	 */
+	public static class PairBuilder<K, V>
+	{
+
+		/** The left content. */
+		private K leftContent;
+
+		/** The right content. */
+		private V rightContent;
+
+		/**
+		 * Instantiates a new pair builder.
+		 */
+		PairBuilder()
+		{
+		}
+
+		/**
+		 * Build it
+		 *
+		 * @return the pair
+		 */
+		public Pair<K, V> build()
+		{
+			return new Pair<>(leftContent, rightContent);
+		}
+
+		/**
+		 * The left.
+		 *
+		 * @param leftContent
+		 *            the left content
+		 * @return the pair builder
+		 */
+		public PairBuilder<K, V> leftContent(final K leftContent)
+		{
+			this.leftContent = leftContent;
+			return this;
+		}
+
+
+		/**
+		 * The right.
+		 *
+		 * @param rightContent
+		 *            the right content
+		 * @return the pair builder
+		 */
+		public PairBuilder<K, V> rightContent(final V rightContent)
+		{
+			this.rightContent = rightContent;
+			return this;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public String toString()
+		{
+			return "Pair.PairBuilder(leftContent=" + this.leftContent + ", rightContent="
+				+ this.rightContent + ")";
+		}
+	}
 
 	/**
 	 * The Constant serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/** The left. */
-	K leftContent;
+	/**
+	 * Builder.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <V>
+	 *            the value type
+	 * @return the pair builder
+	 */
+	public static <K, V> PairBuilder<K, V> builder()
+	{
+		return new PairBuilder<>();
+	}
 
-	/** The right. */
-	V rightContent;
+	/**
+	 * The left.
+	 */
+	private K leftContent;
 
+	/**
+	 * The right.
+	 */
+	private V rightContent;
+
+	/**
+	 * Instantiates a new pair.
+	 */
+	public Pair()
+	{
+	}
+
+	/**
+	 * Instantiates a new pair.
+	 *
+	 * @param leftContent
+	 *            the left content
+	 * @param rightContent
+	 *            the right content
+	 */
+	public Pair(final K leftContent, final V rightContent)
+	{
+		this.leftContent = leftContent;
+		this.rightContent = rightContent;
+	}
+
+	/**
+	 * Can equal.
+	 *
+	 * @param other
+	 *            the other
+	 * @return true, if successful
+	 */
+	protected boolean canEqual(final Object other)
+	{
+		return other instanceof Pair;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (o == this)
+		{
+			return true;
+		}
+		if (!(o instanceof Pair))
+		{
+			return false;
+		}
+		final Pair<?, ?> other = (Pair<?, ?>)o;
+		if (!other.canEqual(this))
+		{
+			return false;
+		}
+		final Object this$leftContent = this.getLeftContent();
+		final Object other$leftContent = other.getLeftContent();
+		if (this$leftContent == null
+			? other$leftContent != null
+			: !this$leftContent.equals(other$leftContent))
+		{
+			return false;
+		}
+		final Object this$rightContent = this.getRightContent();
+		final Object other$rightContent = other.getRightContent();
+		if (this$rightContent == null
+			? other$rightContent != null
+			: !this$rightContent.equals(other$rightContent))
+		{
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * The left.
+	 *
+	 * @return the left content
+	 */
+	public K getLeftContent()
+	{
+		return this.leftContent;
+	}
+
+	/**
+	 * The right.
+	 *
+	 * @return the right content
+	 */
+	public V getRightContent()
+	{
+		return this.rightContent;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int hashCode()
+	{
+		final int PRIME = 59;
+		int result = 1;
+		final Object $leftContent = this.getLeftContent();
+		result = result * PRIME + ($leftContent == null ? 43 : $leftContent.hashCode());
+		final Object $rightContent = this.getRightContent();
+		result = result * PRIME + ($rightContent == null ? 43 : $rightContent.hashCode());
+		return result;
+	}
+
+	/**
+	 * The left.
+	 *
+	 * @param leftContent
+	 *            the new left content
+	 */
+	public void setLeftContent(final K leftContent)
+	{
+		this.leftContent = leftContent;
+	}
+
+	/**
+	 * The right.
+	 *
+	 * @param rightContent
+	 *            the new right content
+	 */
+	public void setRightContent(final V rightContent)
+	{
+		this.rightContent = rightContent;
+	}
+
+	/**
+	 * To builder.
+	 *
+	 * @return the pair builder
+	 */
+	public PairBuilder<K, V> toBuilder()
+	{
+		return new PairBuilder<K, V>().leftContent(this.leftContent)
+			.rightContent(this.rightContent);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString()
+	{
+		return "Pair(leftContent=" + this.getLeftContent() + ", rightContent="
+			+ this.getRightContent() + ")";
+	}
 }

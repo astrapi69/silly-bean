@@ -27,16 +27,6 @@ package de.alpharogroup.collections.pairs;
 import java.io.Serializable;
 import java.util.Map;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-
 /**
  * The class {@link KeyMapPair} represents a key value pair with generic parameters for the key and
  * map value type.
@@ -48,26 +38,236 @@ import lombok.experimental.FieldDefaults;
  * @param <MV>
  *            the generic type of the map value.
  */
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(toBuilder = true)
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class KeyMapPair<K, MK, MV> implements Serializable
 {
+
+	/**
+	 * The class {@link KeyMapPairBuilder}.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <MK>
+	 *            the generic type
+	 * @param <MV>
+	 *            the generic type
+	 */
+	public static class KeyMapPairBuilder<K, MK, MV>
+	{
+
+		/** The key. */
+		private K key;
+
+		/** The values. */
+		private Map<MK, MV> values;
+
+		/**
+		 * Instantiates a new key map pair builder.
+		 */
+		KeyMapPairBuilder()
+		{
+		}
+
+		/**
+		 * Build it
+		 *
+		 * @return the key map pair
+		 */
+		public KeyMapPair<K, MK, MV> build()
+		{
+			return new KeyMapPair<>(key, values);
+		}
+
+		/**
+		 * The key.
+		 *
+		 * @param key
+		 *            the key
+		 * @return the key map pair builder
+		 */
+		public KeyMapPairBuilder<K, MK, MV> key(final K key)
+		{
+			this.key = key;
+			return this;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public String toString()
+		{
+			return "KeyMapPair.KeyMapPairBuilder(key=" + this.key + ", values=" + this.values + ")";
+		}
+
+		/**
+		 * The map with the values.
+		 *
+		 * @param values
+		 *            the values
+		 * @return the key map pair builder
+		 */
+		public KeyMapPairBuilder<K, MK, MV> values(final Map<MK, MV> values)
+		{
+			this.values = values;
+			return this;
+		}
+	}
 
 	/**
 	 * The Constant serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/** The key. */
-	K key;
+	/**
+	 * Builder.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <MK>
+	 *            the generic type
+	 * @param <MV>
+	 *            the generic type
+	 * @return the key map pair builder
+	 */
+	public static <K, MK, MV> KeyMapPairBuilder<K, MK, MV> builder()
+	{
+		return new KeyMapPairBuilder<>();
+	}
 
-	/** The map with the values. */
-	Map<MK, MV> values;
+	/**
+	 * The key.
+	 */
+	private K key;
 
+	/**
+	 * The map with the values.
+	 */
+	private Map<MK, MV> values;
+
+	/**
+	 * Instantiates a new key map pair.
+	 */
+	public KeyMapPair()
+	{
+	}
+
+	/**
+	 * Instantiates a new key map pair.
+	 *
+	 * @param key
+	 *            the key
+	 * @param values
+	 *            the values
+	 */
+	public KeyMapPair(final K key, final Map<MK, MV> values)
+	{
+		this.key = key;
+		this.values = values;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (o == this)
+		{
+			return true;
+		}
+		if (!(o instanceof KeyMapPair))
+		{
+			return false;
+		}
+		final KeyMapPair<?, ?, ?> other = (KeyMapPair<?, ?, ?>)o;
+		final Object this$key = this.getKey();
+		final Object other$key = other.getKey();
+		if (this$key == null ? other$key != null : !this$key.equals(other$key))
+		{
+			return false;
+		}
+		final Object this$values = this.getValues();
+		final Object other$values = other.getValues();
+		if (this$values == null ? other$values != null : !this$values.equals(other$values))
+		{
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * The key.
+	 *
+	 * @return the key
+	 */
+	public K getKey()
+	{
+		return this.key;
+	}
+
+	/**
+	 * The map with the values.
+	 *
+	 * @return the values
+	 */
+	public Map<MK, MV> getValues()
+	{
+		return this.values;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int hashCode()
+	{
+		final int PRIME = 59;
+		int result = 1;
+		final Object $key = this.getKey();
+		result = result * PRIME + ($key == null ? 43 : $key.hashCode());
+		final Object $values = this.getValues();
+		result = result * PRIME + ($values == null ? 43 : $values.hashCode());
+		return result;
+	}
+
+	/**
+	 * The key.
+	 *
+	 * @param key
+	 *            the new key
+	 */
+	public void setKey(final K key)
+	{
+		this.key = key;
+	}
+
+	/**
+	 * The map with the values.
+	 *
+	 * @param values
+	 *            the values
+	 */
+	public void setValues(final Map<MK, MV> values)
+	{
+		this.values = values;
+	}
+
+	/**
+	 * To builder.
+	 *
+	 * @return the key map pair builder
+	 */
+	public KeyMapPairBuilder<K, MK, MV> toBuilder()
+	{
+		return new KeyMapPairBuilder<K, MK, MV>().key(this.key).values(this.values);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString()
+	{
+		return "KeyMapPair(key=" + this.getKey() + ", values=" + this.getValues() + ")";
+	}
 }

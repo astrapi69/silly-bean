@@ -83,16 +83,6 @@ public class KeyMapPairTest
 	}
 
 	/**
-	 * Test method for verify the contracts of {@link KeyMapPair#equals(Object)} ,
-	 * {@link KeyMapPair#hashCode()} and {@link KeyMapPair#toString()}
-	 */
-	@Test(enabled = false)
-	public void verifyEqualsHashcodeAndToStringContracts()
-	{
-		ContractVerifier.of(KeyMapPair.class).verify();
-	}
-
-	/**
 	 * Test method for {@link KeyMapPair}
 	 */
 	@Test
@@ -100,6 +90,16 @@ public class KeyMapPairTest
 	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(KeyMapPair.class);
+	}
+
+	/**
+	 * Test method for verify the contracts of {@link KeyMapPair#equals(Object)} ,
+	 * {@link KeyMapPair#hashCode()} and {@link KeyMapPair#toString()}
+	 */
+	@Test(enabled = true)
+	public void verifyEqualsHashcodeAndToStringContracts()
+	{
+		ContractVerifier.of(KeyMapPair.class).verify();
 	}
 
 }

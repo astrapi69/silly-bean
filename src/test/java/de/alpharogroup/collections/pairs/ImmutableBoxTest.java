@@ -92,16 +92,6 @@ public class ImmutableBoxTest
 	}
 
 	/**
-	 * Test method for verify the contracts of {@link ImmutableBox#equals(Object)} ,
-	 * {@link ImmutableBox#hashCode()} and {@link ImmutableBox#toString()}
-	 */
-	@Test(enabled = false)
-	public void verifyEqualsHashcodeAndToStringContracts()
-	{
-		ContractVerifier.of(ImmutableBox.class).verify();
-	}
-
-	/**
 	 * Test method for {@link ImmutableBox#toString()}
 	 */
 	@Test
@@ -118,6 +108,16 @@ public class ImmutableBoxTest
 		actual = ToStringEvaluator.evaluateConsistency(integerBox);
 		expected = true;
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for verify the contracts of {@link ImmutableBox#equals(Object)} ,
+	 * {@link ImmutableBox#hashCode()} and {@link ImmutableBox#toString()}
+	 */
+	@Test(enabled = true)
+	public void verifyEqualsHashcodeAndToStringContracts()
+	{
+		ContractVerifier.of(ImmutableBox.class).verify();
 	}
 
 }
