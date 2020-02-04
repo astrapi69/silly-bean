@@ -137,6 +137,7 @@ public final class KeyValuePair<K, V> implements Serializable
 		}
 		return list;
 	}
+
 	/**
 	 * Transforms the given {@link List} of {@link KeyValuePair}'s to a {@link Map}.
 	 *

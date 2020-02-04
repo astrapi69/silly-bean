@@ -114,10 +114,12 @@ public final class KeySetPair<K, V> implements Serializable
 			return this;
 		}
 	}
+
 	/**
 	 * The Constant serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
 	public static <K, V> KeySetPairBuilder<K, V> builder()
 	{
 		return new KeySetPairBuilder<K, V>();

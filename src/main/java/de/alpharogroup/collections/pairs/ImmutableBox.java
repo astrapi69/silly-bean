@@ -67,6 +67,7 @@ public class ImmutableBox<T> implements Serializable
 			return this;
 		}
 	}
+
 	/**
 	 * The serialVersionUID.
 	 */

@@ -79,10 +79,12 @@ public class Pair<K, V> implements Serializable
 				+ this.rightContent + ")";
 		}
 	}
+
 	/**
 	 * The Constant serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
 	public static <K, V> PairBuilder<K, V> builder()
 	{
 		return new PairBuilder<K, V>();

@@ -90,14 +90,17 @@ public class Triple<L, M, R> implements Serializable
 				+ this.right + ")";
 		}
 	}
+
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
 	public static <L, M, R> TripleBuilder<L, M, R> builder()
 	{
 		return new TripleBuilder<L, M, R>();
 	}
+
 	/**
 	 * The left value.
 	 */

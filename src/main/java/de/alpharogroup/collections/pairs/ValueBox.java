@@ -64,6 +64,7 @@ public class ValueBox<T> implements Serializable
 			return this;
 		}
 	}
+
 	/**
 	 * The serialVersionUID.
 	 */

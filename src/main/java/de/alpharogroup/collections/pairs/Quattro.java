@@ -104,14 +104,17 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 				+ ")";
 		}
 	}
+
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
 	public static <TL, TR, BL, BR> QuattroBuilder<TL, TR, BL, BR> builder()
 	{
 		return new QuattroBuilder<TL, TR, BL, BR>();
 	}
+
 	/**
 	 * The bottom left value.
 	 */
