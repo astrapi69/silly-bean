@@ -8,13 +8,15 @@ ADDED:
  
 - new enum created that express the modification state 
 - new build system gradle
+- new branch with lombok dependency
 
 CHANGED:
 
 - update of test dependency jobj-contract-verifier version to 3.1.1
 - update of test dependency test-objects version to 5.2
-- removed lombok dependency
+- removed lombok dependency for the develop branch
 - removed maven build system and all related files
+- removed all lombok dependent imports 
 
 Version 1
 -------------
