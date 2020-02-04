@@ -27,16 +27,6 @@ package de.alpharogroup.collections.pairs;
 import java.io.Serializable;
 import java.util.Map;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-
 /**
  * The class {@link KeyMapPair} represents a key value pair with generic parameters for the key and
  * map value type.
@@ -48,26 +38,127 @@ import lombok.experimental.FieldDefaults;
  * @param <MV>
  *            the generic type of the map value.
  */
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(toBuilder = true)
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public final class KeyMapPair<K, MK, MV> implements Serializable
-{
+public final class KeyMapPair<K, MK, MV> implements Serializable {
 
 	/**
 	 * The Constant serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/** The key. */
-	K key;
+	/**
+	 * The key.
+	 */
+	private K key;
 
-	/** The map with the values. */
-	Map<MK, MV> values;
+	/**
+	 * The map with the values.
+	 */
+	private Map<MK, MV> values;
 
+	public static class KeyMapPairBuilder<K, MK, MV> {
+		private K key;
+		private Map<MK, MV> values;
+
+		KeyMapPairBuilder() {
+		}
+
+		/**
+		 * The key.
+		 */
+		public KeyMapPairBuilder<K, MK, MV> key(final K key) {
+			this.key = key;
+			return this;
+		}
+
+		/**
+		 * The map with the values.
+		 */
+		public KeyMapPairBuilder<K, MK, MV> values(final Map<MK, MV> values) {
+			this.values = values;
+			return this;
+		}
+
+		public KeyMapPair<K, MK, MV> build() {
+			return new KeyMapPair<K, MK, MV>(key, values);
+		}
+
+		@Override
+		public String toString() {
+			return "KeyMapPair.KeyMapPairBuilder(key=" + this.key + ", values=" + this.values + ")";
+		}
+	}
+	
+	public static <K, MK, MV> KeyMapPairBuilder<K, MK, MV> builder() {
+		return new KeyMapPairBuilder<K, MK, MV>();
+	}
+	
+	public KeyMapPairBuilder<K, MK, MV> toBuilder() {
+		return new KeyMapPairBuilder<K, MK, MV>().key(this.key).values(this.values);
+	}
+
+	/**
+	 * The key.
+	 */
+	public K getKey() {
+		return this.key;
+	}
+
+	/**
+	 * The map with the values.
+	 */
+	public Map<MK, MV> getValues() {
+		return this.values;
+	}
+
+	/**
+	 * The key.
+	 */
+	public void setKey(final K key) {
+		this.key = key;
+	}
+
+	/**
+	 * The map with the values.
+	 */
+	public void setValues(final Map<MK, MV> values) {
+		this.values = values;
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (o == this) return true;
+		if (!(o instanceof KeyMapPair)) return false;
+		final KeyMapPair<?, ?, ?> other = (KeyMapPair<?, ?, ?>) o;
+		final Object this$key = this.getKey();
+		final Object other$key = other.getKey();
+		if (this$key == null ? other$key != null : !this$key.equals(other$key)) return false;
+		final Object this$values = this.getValues();
+		final Object other$values = other.getValues();
+		if (this$values == null ? other$values != null : !this$values.equals(other$values)) return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 59;
+		int result = 1;
+		final Object $key = this.getKey();
+		result = result * PRIME + ($key == null ? 43 : $key.hashCode());
+		final Object $values = this.getValues();
+		result = result * PRIME + ($values == null ? 43 : $values.hashCode());
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "KeyMapPair(key=" + this.getKey() + ", values=" + this.getValues() + ")";
+	}
+	
+	public KeyMapPair() {
+	}
+	
+	public KeyMapPair(final K key, final Map<MK, MV> values) {
+		this.key = key;
+		this.values = values;
+	}
 }

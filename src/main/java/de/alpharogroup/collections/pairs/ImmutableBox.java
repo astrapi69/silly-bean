@@ -26,15 +26,6 @@ package de.alpharogroup.collections.pairs;
 
 import java.io.Serializable;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-
 /**
  * The class {@link ImmutableBox} represents one value with a generic parameter for an immutable
  * value.
@@ -42,22 +33,92 @@ import lombok.experimental.FieldDefaults;
  * @param <T>
  *            The type of the value.
  */
-@Getter
-@EqualsAndHashCode
-@ToString
-@AllArgsConstructor
-@Builder(toBuilder = true)
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class ImmutableBox<T> implements Serializable
-{
-
+public class ImmutableBox<T> implements Serializable {
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * The value.
+	 */
+	private final T value;
 
-	/** The value. */
-	@NonNull
-	T value;
+	public static class ImmutableBoxBuilder<T> {
+		private T value;
 
+		ImmutableBoxBuilder() {
+		}
+
+		/**
+		 * The value.
+		 */
+		public ImmutableBoxBuilder<T> value(final T value) {
+			if (value == null) {
+				throw new NullPointerException("value is marked non-null but is null");
+			}
+			this.value = value;
+			return this;
+		}
+
+		public ImmutableBox<T> build() {
+			return new ImmutableBox<T>(value);
+		}
+
+		@Override
+		public String toString() {
+			return "ImmutableBox.ImmutableBoxBuilder(value=" + this.value + ")";
+		}
+	}
+
+	public static <T> ImmutableBoxBuilder<T> builder() {
+		return new ImmutableBoxBuilder<T>();
+	}
+
+	public ImmutableBoxBuilder<T> toBuilder() {
+		return new ImmutableBoxBuilder<T>().value(this.value);
+	}
+
+	/**
+	 * The value.
+	 */
+	public T getValue() {
+		return this.value;
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (o == this) return true;
+		if (!(o instanceof ImmutableBox)) return false;
+		final ImmutableBox<?> other = (ImmutableBox<?>) o;
+		if (!other.canEqual((Object) this)) return false;
+		final Object this$value = this.getValue();
+		final Object other$value = other.getValue();
+		if (this$value == null ? other$value != null : !this$value.equals(other$value)) return false;
+		return true;
+	}
+
+	protected boolean canEqual(final Object other) {
+		return other instanceof ImmutableBox;
+	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 59;
+		int result = 1;
+		final Object $value = this.getValue();
+		result = result * PRIME + ($value == null ? 43 : $value.hashCode());
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "ImmutableBox(value=" + this.getValue() + ")";
+	}
+
+	public ImmutableBox(final T value) {
+		if (value == null) {
+			throw new NullPointerException("value is marked non-null but is null");
+		}
+		this.value = value;
+	}
 }

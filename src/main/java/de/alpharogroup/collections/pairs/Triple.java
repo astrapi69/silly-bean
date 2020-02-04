@@ -26,49 +26,202 @@ package de.alpharogroup.collections.pairs;
 
 import java.io.Serializable;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-
 /**
  * The class {@link Triple} represents a triple of values with generic parameters for the values.
  *
- * @param <L>
- *            The generic type of the left content of this Triple.
- * @param <M>
- *            The generic type of the middle content of this Triple.
- * @param <R>
- *            The generic type of the right content of this Triple.
+ * @param <L> The generic type of the left content of this Triple.
+ * @param <M> The generic type of the middle content of this Triple.
+ * @param <R> The generic type of the right content of this Triple.
  */
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(toBuilder = true)
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Triple<L, M, R> implements Serializable
 {
-
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * The left value.
+	 */
+	private L left;
+	/**
+	 * The middle value.
+	 */
+	private M middle;
+	/**
+	 * The right value.
+	 */
+	private R right;
 
-	/** The left value. */
-	L left;
+	public static class TripleBuilder<L, M, R>
+	{
 
-	/** The middle value. */
-	M middle;
+		private L left;
 
-	/** The right value. */
-	R right;
+		private M middle;
 
+		private R right;
+
+		TripleBuilder()
+		{
+		}
+
+		/**
+		 * The left value.
+		 */
+		public TripleBuilder<L, M, R> left(final L left)
+		{
+			this.left = left;
+			return this;
+		}
+
+		/**
+		 * The middle value.
+		 */
+		public TripleBuilder<L, M, R> middle(final M middle)
+		{
+			this.middle = middle;
+			return this;
+		}
+
+		/**
+		 * The right value.
+		 */
+		public TripleBuilder<L, M, R> right(final R right)
+		{
+			this.right = right;
+			return this;
+		}
+
+		public Triple<L, M, R> build()
+		{
+			return new Triple<L, M, R>(left, middle, right);
+		}
+
+		@Override
+		public String toString()
+		{
+			return "Triple.TripleBuilder(left=" + this.left + ", middle=" + this.middle + ", right="
+				+ this.right + ")";
+		}
+	}
+
+	public static <L, M, R> TripleBuilder<L, M, R> builder()
+	{
+		return new TripleBuilder<L, M, R>();
+	}
+
+	public TripleBuilder<L, M, R> toBuilder()
+	{
+		return new TripleBuilder<L, M, R>().left(this.left).middle(this.middle).right(this.right);
+	}
+
+	/**
+	 * The left value.
+	 */
+	public L getLeft()
+	{
+		return this.left;
+	}
+
+	/**
+	 * The middle value.
+	 */
+	public M getMiddle()
+	{
+		return this.middle;
+	}
+
+	/**
+	 * The right value.
+	 */
+	public R getRight()
+	{
+		return this.right;
+	}
+
+	/**
+	 * The left value.
+	 */
+	public void setLeft(final L left)
+	{
+		this.left = left;
+	}
+
+	/**
+	 * The middle value.
+	 */
+	public void setMiddle(final M middle)
+	{
+		this.middle = middle;
+	}
+
+	/**
+	 * The right value.
+	 */
+	public void setRight(final R right)
+	{
+		this.right = right;
+	}
+
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (o == this)
+			return true;
+		if (!(o instanceof Triple))
+			return false;
+		final Triple<?, ?, ?> other = (Triple<?, ?, ?>)o;
+		if (!other.canEqual((Object)this))
+			return false;
+		final Object this$left = this.getLeft();
+		final Object other$left = other.getLeft();
+		if (this$left == null ? other$left != null : !this$left.equals(other$left))
+			return false;
+		final Object this$middle = this.getMiddle();
+		final Object other$middle = other.getMiddle();
+		if (this$middle == null ? other$middle != null : !this$middle.equals(other$middle))
+			return false;
+		final Object this$right = this.getRight();
+		final Object other$right = other.getRight();
+		if (this$right == null ? other$right != null : !this$right.equals(other$right))
+			return false;
+		return true;
+	}
+
+	protected boolean canEqual(final Object other)
+	{
+		return other instanceof Triple;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int PRIME = 59;
+		int result = 1;
+		final Object $left = this.getLeft();
+		result = result * PRIME + ($left == null ? 43 : $left.hashCode());
+		final Object $middle = this.getMiddle();
+		result = result * PRIME + ($middle == null ? 43 : $middle.hashCode());
+		final Object $right = this.getRight();
+		result = result * PRIME + ($right == null ? 43 : $right.hashCode());
+		return result;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Triple(left=" + this.getLeft() + ", middle=" + this.getMiddle() + ", right=" + this
+			.getRight() + ")";
+	}
+
+	public Triple()
+	{
+	}
+
+	public Triple(final L left, final M middle, final R right)
+	{
+		this.left = left;
+		this.middle = middle;
+		this.right = right;
+	}
 }

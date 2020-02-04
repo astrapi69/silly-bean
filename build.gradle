@@ -5,12 +5,10 @@ buildscript {
         }
     }
     dependencies {
-        classpath "io.franzbecker:gradle-lombok:3.2.0"
     }
 }
 
 plugins {
-    id "io.franzbecker.gradle-lombok" version "3.2.0"
     id "java"
     id "maven-publish"
     id "signing"
@@ -32,28 +30,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
     testCompile("de.alpharogroup:jobj-contract-verifier:$jobjContractVerifierVersion")
     testCompile("de.alpharogroup:test-objects:$testObjectsVersion")
     testCompile("de.alpharogroup:silly-collections:$sillyCollectionsVersion")
     testCompile("org.apache.commons:commons-lang3:$commonsLang3Version")
     testCompile("org.meanbean:meanbean:$meanbeanVersion")
     testCompile("org.testng:testng:$testngVersion")
-}
-
-import io.franzbecker.gradle.lombok.task.DelombokTask
-
-task delombok(type: DelombokTask, dependsOn: compileJava) {
-    ext.outputDir = file("$buildDir/delombok")
-    outputs.dir(outputDir)
-    sourceSets.main.java.srcDirs.each {
-        inputs.dir(it)
-        args(it, "-d", outputDir)
-    }
-    doFirst {
-        outputDir.deleteDir()
-    }
 }
 
 license {
