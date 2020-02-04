@@ -40,23 +40,47 @@ import java.io.Serializable;
  */
 public class Quattro<TL, TR, BL, BR> implements Serializable
 {
+
+	/**
+	 * The class {@link QuattroBuilder}.
+	 *
+	 * @param <TL>
+	 *            the generic type
+	 * @param <TR>
+	 *            the generic type
+	 * @param <BL>
+	 *            the generic type
+	 * @param <BR>
+	 *            the generic type
+	 */
 	public static class QuattroBuilder<TL, TR, BL, BR>
 	{
 
+		/** The bottom left. */
 		private BL bottomLeft;
 
+		/** The bottom right. */
 		private BR bottomRight;
 
+		/** The top left. */
 		private TL topLeft;
 
+		/** The top right. */
 		private TR topRight;
 
+		/**
+		 * Instantiates a new quattro builder.
+		 */
 		QuattroBuilder()
 		{
 		}
 
 		/**
 		 * The bottom left value.
+		 *
+		 * @param bottomLeft
+		 *            the bottom left
+		 * @return the quattro builder
 		 */
 		public QuattroBuilder<TL, TR, BL, BR> bottomLeft(final BL bottomLeft)
 		{
@@ -66,6 +90,10 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 		/**
 		 * The bottom right value.
+		 *
+		 * @param bottomRight
+		 *            the bottom right
+		 * @return the quattro builder
 		 */
 		public QuattroBuilder<TL, TR, BL, BR> bottomRight(final BR bottomRight)
 		{
@@ -73,13 +101,22 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 			return this;
 		}
 
+		/**
+		 * Build it
+		 *
+		 * @return the quattro
+		 */
 		public Quattro<TL, TR, BL, BR> build()
 		{
-			return new Quattro<TL, TR, BL, BR>(bottomLeft, bottomRight, topLeft, topRight);
+			return new Quattro<>(bottomLeft, bottomRight, topLeft, topRight);
 		}
 
 		/**
 		 * The top left value.
+		 *
+		 * @param topLeft
+		 *            the top left
+		 * @return the quattro builder
 		 */
 		public QuattroBuilder<TL, TR, BL, BR> topLeft(final TL topLeft)
 		{
@@ -89,6 +126,10 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 		/**
 		 * The top right value.
+		 *
+		 * @param topRight
+		 *            the top right
+		 * @return the quattro builder
 		 */
 		public QuattroBuilder<TL, TR, BL, BR> topRight(final TR topRight)
 		{
@@ -96,6 +137,9 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 			return this;
 		}
 
+		/**
+		 * {@inheritDoc}
+		 */
 		@Override
 		public String toString()
 		{
@@ -110,9 +154,22 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Builder.
+	 *
+	 * @param <TL>
+	 *            the generic type
+	 * @param <TR>
+	 *            the generic type
+	 * @param <BL>
+	 *            the generic type
+	 * @param <BR>
+	 *            the generic type
+	 * @return the quattro builder
+	 */
 	public static <TL, TR, BL, BR> QuattroBuilder<TL, TR, BL, BR> builder()
 	{
-		return new QuattroBuilder<TL, TR, BL, BR>();
+		return new QuattroBuilder<>();
 	}
 
 	/**
@@ -134,10 +191,25 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 	 */
 	private TR topRight;
 
+	/**
+	 * Instantiates a new quattro.
+	 */
 	public Quattro()
 	{
 	}
 
+	/**
+	 * Instantiates a new quattro.
+	 *
+	 * @param bottomLeft
+	 *            the bottom left
+	 * @param bottomRight
+	 *            the bottom right
+	 * @param topLeft
+	 *            the top left
+	 * @param topRight
+	 *            the top right
+	 */
 	public Quattro(final BL bottomLeft, final BR bottomRight, final TL topLeft, final TR topRight)
 	{
 		this.bottomLeft = bottomLeft;
@@ -146,46 +218,72 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 		this.topRight = topRight;
 	}
 
+	/**
+	 * Can equal.
+	 *
+	 * @param other
+	 *            the other
+	 * @return true, if successful
+	 */
 	protected boolean canEqual(final Object other)
 	{
 		return other instanceof Quattro;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(final Object o)
 	{
 		if (o == this)
+		{
 			return true;
+		}
 		if (!(o instanceof Quattro))
+		{
 			return false;
+		}
 		final Quattro<?, ?, ?, ?> other = (Quattro<?, ?, ?, ?>)o;
 		if (!other.canEqual(this))
+		{
 			return false;
+		}
 		final Object this$bottomLeft = this.getBottomLeft();
 		final Object other$bottomLeft = other.getBottomLeft();
 		if (this$bottomLeft == null
 			? other$bottomLeft != null
 			: !this$bottomLeft.equals(other$bottomLeft))
+		{
 			return false;
+		}
 		final Object this$bottomRight = this.getBottomRight();
 		final Object other$bottomRight = other.getBottomRight();
 		if (this$bottomRight == null
 			? other$bottomRight != null
 			: !this$bottomRight.equals(other$bottomRight))
+		{
 			return false;
+		}
 		final Object this$topLeft = this.getTopLeft();
 		final Object other$topLeft = other.getTopLeft();
 		if (this$topLeft == null ? other$topLeft != null : !this$topLeft.equals(other$topLeft))
+		{
 			return false;
+		}
 		final Object this$topRight = this.getTopRight();
 		final Object other$topRight = other.getTopRight();
 		if (this$topRight == null ? other$topRight != null : !this$topRight.equals(other$topRight))
+		{
 			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * The bottom left value.
+	 *
+	 * @return the bottom left
 	 */
 	public BL getBottomLeft()
 	{
@@ -194,6 +292,8 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 	/**
 	 * The bottom right value.
+	 *
+	 * @return the bottom right
 	 */
 	public BR getBottomRight()
 	{
@@ -202,6 +302,8 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 	/**
 	 * The top left value.
+	 *
+	 * @return the top left
 	 */
 	public TL getTopLeft()
 	{
@@ -210,12 +312,17 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 	/**
 	 * The top right value.
+	 *
+	 * @return the top right
 	 */
 	public TR getTopRight()
 	{
 		return this.topRight;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -234,6 +341,9 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 	/**
 	 * The bottom left value.
+	 *
+	 * @param bottomLeft
+	 *            the new bottom left
 	 */
 	public void setBottomLeft(final BL bottomLeft)
 	{
@@ -242,6 +352,9 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 	/**
 	 * The bottom right value.
+	 *
+	 * @param bottomRight
+	 *            the new bottom right
 	 */
 	public void setBottomRight(final BR bottomRight)
 	{
@@ -250,6 +363,9 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 	/**
 	 * The top left value.
+	 *
+	 * @param topLeft
+	 *            the new top left
 	 */
 	public void setTopLeft(final TL topLeft)
 	{
@@ -258,18 +374,29 @@ public class Quattro<TL, TR, BL, BR> implements Serializable
 
 	/**
 	 * The top right value.
+	 *
+	 * @param topRight
+	 *            the new top right
 	 */
 	public void setTopRight(final TR topRight)
 	{
 		this.topRight = topRight;
 	}
 
+	/**
+	 * To builder.
+	 *
+	 * @return the quattro builder
+	 */
 	public QuattroBuilder<TL, TR, BL, BR> toBuilder()
 	{
 		return new QuattroBuilder<TL, TR, BL, BR>().bottomLeft(this.bottomLeft)
 			.bottomRight(this.bottomRight).topLeft(this.topLeft).topRight(this.topRight);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString()
 	{

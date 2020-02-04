@@ -41,22 +41,48 @@ import java.util.Map;
 public final class KeyMapPair<K, MK, MV> implements Serializable
 {
 
+	/**
+	 * The class {@link KeyMapPairBuilder}.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <MK>
+	 *            the generic type
+	 * @param <MV>
+	 *            the generic type
+	 */
 	public static class KeyMapPairBuilder<K, MK, MV>
 	{
+
+		/** The key. */
 		private K key;
+
+		/** The values. */
 		private Map<MK, MV> values;
 
+		/**
+		 * Instantiates a new key map pair builder.
+		 */
 		KeyMapPairBuilder()
 		{
 		}
 
+		/**
+		 * Build it
+		 *
+		 * @return the key map pair
+		 */
 		public KeyMapPair<K, MK, MV> build()
 		{
-			return new KeyMapPair<K, MK, MV>(key, values);
+			return new KeyMapPair<>(key, values);
 		}
 
 		/**
 		 * The key.
+		 *
+		 * @param key
+		 *            the key
+		 * @return the key map pair builder
 		 */
 		public KeyMapPairBuilder<K, MK, MV> key(final K key)
 		{
@@ -64,6 +90,9 @@ public final class KeyMapPair<K, MK, MV> implements Serializable
 			return this;
 		}
 
+		/**
+		 * {@inheritDoc}
+		 */
 		@Override
 		public String toString()
 		{
@@ -72,6 +101,10 @@ public final class KeyMapPair<K, MK, MV> implements Serializable
 
 		/**
 		 * The map with the values.
+		 *
+		 * @param values
+		 *            the values
+		 * @return the key map pair builder
 		 */
 		public KeyMapPairBuilder<K, MK, MV> values(final Map<MK, MV> values)
 		{
@@ -85,9 +118,20 @@ public final class KeyMapPair<K, MK, MV> implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Builder.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <MK>
+	 *            the generic type
+	 * @param <MV>
+	 *            the generic type
+	 * @return the key map pair builder
+	 */
 	public static <K, MK, MV> KeyMapPairBuilder<K, MK, MV> builder()
 	{
-		return new KeyMapPairBuilder<K, MK, MV>();
+		return new KeyMapPairBuilder<>();
 	}
 
 	/**
@@ -100,37 +144,61 @@ public final class KeyMapPair<K, MK, MV> implements Serializable
 	 */
 	private Map<MK, MV> values;
 
+	/**
+	 * Instantiates a new key map pair.
+	 */
 	public KeyMapPair()
 	{
 	}
 
+	/**
+	 * Instantiates a new key map pair.
+	 *
+	 * @param key
+	 *            the key
+	 * @param values
+	 *            the values
+	 */
 	public KeyMapPair(final K key, final Map<MK, MV> values)
 	{
 		this.key = key;
 		this.values = values;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(final Object o)
 	{
 		if (o == this)
+		{
 			return true;
+		}
 		if (!(o instanceof KeyMapPair))
+		{
 			return false;
+		}
 		final KeyMapPair<?, ?, ?> other = (KeyMapPair<?, ?, ?>)o;
 		final Object this$key = this.getKey();
 		final Object other$key = other.getKey();
 		if (this$key == null ? other$key != null : !this$key.equals(other$key))
+		{
 			return false;
+		}
 		final Object this$values = this.getValues();
 		final Object other$values = other.getValues();
 		if (this$values == null ? other$values != null : !this$values.equals(other$values))
+		{
 			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * The key.
+	 *
+	 * @return the key
 	 */
 	public K getKey()
 	{
@@ -139,12 +207,17 @@ public final class KeyMapPair<K, MK, MV> implements Serializable
 
 	/**
 	 * The map with the values.
+	 *
+	 * @return the values
 	 */
 	public Map<MK, MV> getValues()
 	{
 		return this.values;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -159,6 +232,9 @@ public final class KeyMapPair<K, MK, MV> implements Serializable
 
 	/**
 	 * The key.
+	 *
+	 * @param key
+	 *            the new key
 	 */
 	public void setKey(final K key)
 	{
@@ -167,17 +243,28 @@ public final class KeyMapPair<K, MK, MV> implements Serializable
 
 	/**
 	 * The map with the values.
+	 *
+	 * @param values
+	 *            the values
 	 */
 	public void setValues(final Map<MK, MV> values)
 	{
 		this.values = values;
 	}
 
+	/**
+	 * To builder.
+	 *
+	 * @return the key map pair builder
+	 */
 	public KeyMapPairBuilder<K, MK, MV> toBuilder()
 	{
 		return new KeyMapPairBuilder<K, MK, MV>().key(this.key).values(this.values);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString()
 	{

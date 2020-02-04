@@ -45,25 +45,48 @@ import java.util.Properties;
  */
 public final class KeyValuePair<K, V> implements Serializable
 {
+
+	/**
+	 * The class {@link KeyValuePairBuilder}.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <V>
+	 *            the value type
+	 */
 	public static class KeyValuePairBuilder<K, V>
 	{
 
+		/** The key. */
 		private K key;
 
+		/** The value. */
 		private V value;
 
 
+		/**
+		 * Instantiates a new key value pair builder.
+		 */
 		KeyValuePairBuilder()
 		{
 		}
 
+		/**
+		 * Build it
+		 *
+		 * @return the key value pair
+		 */
 		public KeyValuePair<K, V> build()
 		{
-			return new KeyValuePair<K, V>(key, value);
+			return new KeyValuePair<>(key, value);
 		}
 
 		/**
 		 * The key.
+		 *
+		 * @param key
+		 *            the key
+		 * @return the key value pair builder
 		 */
 		public KeyValuePairBuilder<K, V> key(final K key)
 		{
@@ -71,6 +94,9 @@ public final class KeyValuePair<K, V> implements Serializable
 			return this;
 		}
 
+		/**
+		 * {@inheritDoc}
+		 */
 		@Override
 		public String toString()
 		{
@@ -80,6 +106,10 @@ public final class KeyValuePair<K, V> implements Serializable
 
 		/**
 		 * The value.
+		 *
+		 * @param value
+		 *            the value
+		 * @return the key value pair builder
 		 */
 		public KeyValuePairBuilder<K, V> value(final V value)
 		{
@@ -93,9 +123,18 @@ public final class KeyValuePair<K, V> implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Builder.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <V>
+	 *            the value type
+	 * @return the key value pair builder
+	 */
 	public static <K, V> KeyValuePairBuilder<K, V> builder()
 	{
-		return new KeyValuePairBuilder<K, V>();
+		return new KeyValuePairBuilder<>();
 	}
 
 	/**
@@ -169,37 +208,61 @@ public final class KeyValuePair<K, V> implements Serializable
 	 */
 	private V value;
 
+	/**
+	 * Instantiates a new key value pair.
+	 */
 	public KeyValuePair()
 	{
 	}
 
+	/**
+	 * Instantiates a new key value pair.
+	 *
+	 * @param key
+	 *            the key
+	 * @param value
+	 *            the value
+	 */
 	public KeyValuePair(final K key, final V value)
 	{
 		this.key = key;
 		this.value = value;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(final Object o)
 	{
 		if (o == this)
+		{
 			return true;
+		}
 		if (!(o instanceof KeyValuePair))
+		{
 			return false;
+		}
 		final KeyValuePair<?, ?> other = (KeyValuePair<?, ?>)o;
 		final Object this$key = this.getKey();
 		final Object other$key = other.getKey();
 		if (this$key == null ? other$key != null : !this$key.equals(other$key))
+		{
 			return false;
+		}
 		final Object this$value = this.getValue();
 		final Object other$value = other.getValue();
 		if (this$value == null ? other$value != null : !this$value.equals(other$value))
+		{
 			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * The key.
+	 *
+	 * @return the key
 	 */
 	public K getKey()
 	{
@@ -208,12 +271,17 @@ public final class KeyValuePair<K, V> implements Serializable
 
 	/**
 	 * The value.
+	 *
+	 * @return the value
 	 */
 	public V getValue()
 	{
 		return this.value;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -228,6 +296,9 @@ public final class KeyValuePair<K, V> implements Serializable
 
 	/**
 	 * The key.
+	 *
+	 * @param key
+	 *            the new key
 	 */
 	public void setKey(final K key)
 	{
@@ -236,17 +307,28 @@ public final class KeyValuePair<K, V> implements Serializable
 
 	/**
 	 * The value.
+	 *
+	 * @param value
+	 *            the new value
 	 */
 	public void setValue(final V value)
 	{
 		this.value = value;
 	}
 
+	/**
+	 * To builder.
+	 *
+	 * @return the key value pair builder
+	 */
 	public KeyValuePairBuilder<K, V> toBuilder()
 	{
 		return new KeyValuePairBuilder<K, V>().key(this.key).value(this.value);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString()
 	{
