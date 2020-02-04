@@ -35,19 +35,39 @@ import java.io.Serializable;
  */
 public class ImmutableBox<T> implements Serializable
 {
+
+	/**
+	 * The class {@link ImmutableBoxBuilder}.
+	 *
+	 * @param <T>
+	 *            the generic type
+	 */
 	public static class ImmutableBoxBuilder<T>
 	{
+
+		/** The value. */
 		private T value;
 
+		/**
+		 * Instantiates a new immutable box builder.
+		 */
 		ImmutableBoxBuilder()
 		{
 		}
 
+		/**
+		 * Build it
+		 *
+		 * @return the immutable box
+		 */
 		public ImmutableBox<T> build()
 		{
-			return new ImmutableBox<T>(value);
+			return new ImmutableBox<>(value);
 		}
 
+		/**
+		 * {@inheritDoc}
+		 */
 		@Override
 		public String toString()
 		{
@@ -56,6 +76,10 @@ public class ImmutableBox<T> implements Serializable
 
 		/**
 		 * The value.
+		 *
+		 * @param value
+		 *            the value
+		 * @return the immutable box builder
 		 */
 		public ImmutableBoxBuilder<T> value(final T value)
 		{
@@ -73,9 +97,16 @@ public class ImmutableBox<T> implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Builder.
+	 *
+	 * @param <T>
+	 *            the generic type
+	 * @return the immutable box builder
+	 */
 	public static <T> ImmutableBoxBuilder<T> builder()
 	{
-		return new ImmutableBoxBuilder<T>();
+		return new ImmutableBoxBuilder<>();
 	}
 
 	/**
@@ -83,6 +114,12 @@ public class ImmutableBox<T> implements Serializable
 	 */
 	private final T value;
 
+	/**
+	 * Instantiates a new immutable box.
+	 *
+	 * @param value
+	 *            the value
+	 */
 	public ImmutableBox(final T value)
 	{
 		if (value == null)
@@ -92,36 +129,59 @@ public class ImmutableBox<T> implements Serializable
 		this.value = value;
 	}
 
+	/**
+	 * Can equal.
+	 *
+	 * @param other
+	 *            the other
+	 * @return true, if successful
+	 */
 	protected boolean canEqual(final Object other)
 	{
 		return other instanceof ImmutableBox;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(final Object o)
 	{
 		if (o == this)
+		{
 			return true;
+		}
 		if (!(o instanceof ImmutableBox))
+		{
 			return false;
+		}
 		final ImmutableBox<?> other = (ImmutableBox<?>)o;
 		if (!other.canEqual(this))
+		{
 			return false;
+		}
 		final Object this$value = this.getValue();
 		final Object other$value = other.getValue();
 		if (this$value == null ? other$value != null : !this$value.equals(other$value))
+		{
 			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * The value.
+	 *
+	 * @return the value
 	 */
 	public T getValue()
 	{
 		return this.value;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -132,11 +192,19 @@ public class ImmutableBox<T> implements Serializable
 		return result;
 	}
 
+	/**
+	 * To builder.
+	 *
+	 * @return the immutable box builder
+	 */
 	public ImmutableBoxBuilder<T> toBuilder()
 	{
 		return new ImmutableBoxBuilder<T>().value(this.value);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString()
 	{

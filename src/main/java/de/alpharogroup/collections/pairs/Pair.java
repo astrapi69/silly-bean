@@ -37,24 +37,47 @@ import java.io.Serializable;
  */
 public class Pair<K, V> implements Serializable
 {
+
+	/**
+	 * The class {@link PairBuilder}.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <V>
+	 *            the value type
+	 */
 	public static class PairBuilder<K, V>
 	{
 
+		/** The left content. */
 		private K leftContent;
 
+		/** The right content. */
 		private V rightContent;
 
+		/**
+		 * Instantiates a new pair builder.
+		 */
 		PairBuilder()
 		{
 		}
 
+		/**
+		 * Build it
+		 *
+		 * @return the pair
+		 */
 		public Pair<K, V> build()
 		{
-			return new Pair<K, V>(leftContent, rightContent);
+			return new Pair<>(leftContent, rightContent);
 		}
 
 		/**
 		 * The left.
+		 *
+		 * @param leftContent
+		 *            the left content
+		 * @return the pair builder
 		 */
 		public PairBuilder<K, V> leftContent(final K leftContent)
 		{
@@ -65,6 +88,10 @@ public class Pair<K, V> implements Serializable
 
 		/**
 		 * The right.
+		 *
+		 * @param rightContent
+		 *            the right content
+		 * @return the pair builder
 		 */
 		public PairBuilder<K, V> rightContent(final V rightContent)
 		{
@@ -72,6 +99,9 @@ public class Pair<K, V> implements Serializable
 			return this;
 		}
 
+		/**
+		 * {@inheritDoc}
+		 */
 		@Override
 		public String toString()
 		{
@@ -85,9 +115,18 @@ public class Pair<K, V> implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Builder.
+	 *
+	 * @param <K>
+	 *            the key type
+	 * @param <V>
+	 *            the value type
+	 * @return the pair builder
+	 */
 	public static <K, V> PairBuilder<K, V> builder()
 	{
-		return new PairBuilder<K, V>();
+		return new PairBuilder<>();
 	}
 
 	/**
@@ -100,48 +139,81 @@ public class Pair<K, V> implements Serializable
 	 */
 	private V rightContent;
 
+	/**
+	 * Instantiates a new pair.
+	 */
 	public Pair()
 	{
 	}
 
+	/**
+	 * Instantiates a new pair.
+	 *
+	 * @param leftContent
+	 *            the left content
+	 * @param rightContent
+	 *            the right content
+	 */
 	public Pair(final K leftContent, final V rightContent)
 	{
 		this.leftContent = leftContent;
 		this.rightContent = rightContent;
 	}
 
+	/**
+	 * Can equal.
+	 *
+	 * @param other
+	 *            the other
+	 * @return true, if successful
+	 */
 	protected boolean canEqual(final Object other)
 	{
 		return other instanceof Pair;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(final Object o)
 	{
 		if (o == this)
+		{
 			return true;
+		}
 		if (!(o instanceof Pair))
+		{
 			return false;
+		}
 		final Pair<?, ?> other = (Pair<?, ?>)o;
 		if (!other.canEqual(this))
+		{
 			return false;
+		}
 		final Object this$leftContent = this.getLeftContent();
 		final Object other$leftContent = other.getLeftContent();
 		if (this$leftContent == null
 			? other$leftContent != null
 			: !this$leftContent.equals(other$leftContent))
+		{
 			return false;
+		}
 		final Object this$rightContent = this.getRightContent();
 		final Object other$rightContent = other.getRightContent();
 		if (this$rightContent == null
 			? other$rightContent != null
 			: !this$rightContent.equals(other$rightContent))
+		{
 			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * The left.
+	 *
+	 * @return the left content
 	 */
 	public K getLeftContent()
 	{
@@ -150,12 +222,17 @@ public class Pair<K, V> implements Serializable
 
 	/**
 	 * The right.
+	 *
+	 * @return the right content
 	 */
 	public V getRightContent()
 	{
 		return this.rightContent;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -170,6 +247,9 @@ public class Pair<K, V> implements Serializable
 
 	/**
 	 * The left.
+	 *
+	 * @param leftContent
+	 *            the new left content
 	 */
 	public void setLeftContent(final K leftContent)
 	{
@@ -178,18 +258,29 @@ public class Pair<K, V> implements Serializable
 
 	/**
 	 * The right.
+	 *
+	 * @param rightContent
+	 *            the new right content
 	 */
 	public void setRightContent(final V rightContent)
 	{
 		this.rightContent = rightContent;
 	}
 
+	/**
+	 * To builder.
+	 *
+	 * @return the pair builder
+	 */
 	public PairBuilder<K, V> toBuilder()
 	{
 		return new PairBuilder<K, V>().leftContent(this.leftContent)
 			.rightContent(this.rightContent);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString()
 	{

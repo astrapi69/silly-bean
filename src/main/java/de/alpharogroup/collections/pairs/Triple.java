@@ -38,26 +38,52 @@ import java.io.Serializable;
  */
 public class Triple<L, M, R> implements Serializable
 {
+
+	/**
+	 * The class {@link TripleBuilder}.
+	 *
+	 * @param <L>
+	 *            the generic type
+	 * @param <M>
+	 *            the generic type
+	 * @param <R>
+	 *            the generic type
+	 */
 	public static class TripleBuilder<L, M, R>
 	{
 
+		/** The left. */
 		private L left;
 
+		/** The middle. */
 		private M middle;
 
+		/** The right. */
 		private R right;
 
+		/**
+		 * Instantiates a new triple builder.
+		 */
 		TripleBuilder()
 		{
 		}
 
+		/**
+		 * Build it
+		 *
+		 * @return the triple
+		 */
 		public Triple<L, M, R> build()
 		{
-			return new Triple<L, M, R>(left, middle, right);
+			return new Triple<>(left, middle, right);
 		}
 
 		/**
 		 * The left value.
+		 *
+		 * @param left
+		 *            the left
+		 * @return the triple builder
 		 */
 		public TripleBuilder<L, M, R> left(final L left)
 		{
@@ -67,6 +93,10 @@ public class Triple<L, M, R> implements Serializable
 
 		/**
 		 * The middle value.
+		 *
+		 * @param middle
+		 *            the middle
+		 * @return the triple builder
 		 */
 		public TripleBuilder<L, M, R> middle(final M middle)
 		{
@@ -76,6 +106,10 @@ public class Triple<L, M, R> implements Serializable
 
 		/**
 		 * The right value.
+		 *
+		 * @param right
+		 *            the right
+		 * @return the triple builder
 		 */
 		public TripleBuilder<L, M, R> right(final R right)
 		{
@@ -83,6 +117,9 @@ public class Triple<L, M, R> implements Serializable
 			return this;
 		}
 
+		/**
+		 * {@inheritDoc}
+		 */
 		@Override
 		public String toString()
 		{
@@ -96,9 +133,20 @@ public class Triple<L, M, R> implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Builder.
+	 *
+	 * @param <L>
+	 *            the generic type
+	 * @param <M>
+	 *            the generic type
+	 * @param <R>
+	 *            the generic type
+	 * @return the triple builder
+	 */
 	public static <L, M, R> TripleBuilder<L, M, R> builder()
 	{
-		return new TripleBuilder<L, M, R>();
+		return new TripleBuilder<>();
 	}
 
 	/**
@@ -116,10 +164,23 @@ public class Triple<L, M, R> implements Serializable
 	 */
 	private R right;
 
+	/**
+	 * Instantiates a new triple.
+	 */
 	public Triple()
 	{
 	}
 
+	/**
+	 * Instantiates a new triple.
+	 *
+	 * @param left
+	 *            the left
+	 * @param middle
+	 *            the middle
+	 * @param right
+	 *            the right
+	 */
 	public Triple(final L left, final M middle, final R right)
 	{
 		this.left = left;
@@ -127,38 +188,62 @@ public class Triple<L, M, R> implements Serializable
 		this.right = right;
 	}
 
+	/**
+	 * Can equal.
+	 *
+	 * @param other
+	 *            the other
+	 * @return true, if successful
+	 */
 	protected boolean canEqual(final Object other)
 	{
 		return other instanceof Triple;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(final Object o)
 	{
 		if (o == this)
+		{
 			return true;
+		}
 		if (!(o instanceof Triple))
+		{
 			return false;
+		}
 		final Triple<?, ?, ?> other = (Triple<?, ?, ?>)o;
 		if (!other.canEqual(this))
+		{
 			return false;
+		}
 		final Object this$left = this.getLeft();
 		final Object other$left = other.getLeft();
 		if (this$left == null ? other$left != null : !this$left.equals(other$left))
+		{
 			return false;
+		}
 		final Object this$middle = this.getMiddle();
 		final Object other$middle = other.getMiddle();
 		if (this$middle == null ? other$middle != null : !this$middle.equals(other$middle))
+		{
 			return false;
+		}
 		final Object this$right = this.getRight();
 		final Object other$right = other.getRight();
 		if (this$right == null ? other$right != null : !this$right.equals(other$right))
+		{
 			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * The left value.
+	 *
+	 * @return the left
 	 */
 	public L getLeft()
 	{
@@ -167,6 +252,8 @@ public class Triple<L, M, R> implements Serializable
 
 	/**
 	 * The middle value.
+	 *
+	 * @return the middle
 	 */
 	public M getMiddle()
 	{
@@ -175,12 +262,17 @@ public class Triple<L, M, R> implements Serializable
 
 	/**
 	 * The right value.
+	 *
+	 * @return the right
 	 */
 	public R getRight()
 	{
 		return this.right;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode()
 	{
@@ -197,6 +289,9 @@ public class Triple<L, M, R> implements Serializable
 
 	/**
 	 * The left value.
+	 *
+	 * @param left
+	 *            the new left
 	 */
 	public void setLeft(final L left)
 	{
@@ -205,6 +300,9 @@ public class Triple<L, M, R> implements Serializable
 
 	/**
 	 * The middle value.
+	 *
+	 * @param middle
+	 *            the new middle
 	 */
 	public void setMiddle(final M middle)
 	{
@@ -213,17 +311,28 @@ public class Triple<L, M, R> implements Serializable
 
 	/**
 	 * The right value.
+	 *
+	 * @param right
+	 *            the new right
 	 */
 	public void setRight(final R right)
 	{
 		this.right = right;
 	}
 
+	/**
+	 * To builder.
+	 *
+	 * @return the triple builder
+	 */
 	public TripleBuilder<L, M, R> toBuilder()
 	{
 		return new TripleBuilder<L, M, R>().left(this.left).middle(this.middle).right(this.right);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toString()
 	{
