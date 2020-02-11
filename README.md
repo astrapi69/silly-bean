@@ -84,7 +84,7 @@ ext {
 }
 dependencies {
 			...
-implementation "de.alpharogroup:silly-beans:${sillyBeansVersion}"
+implementation("de.alpharogroup:silly-beans:$sillyBeansVersion")
 			...
 }
 ```
