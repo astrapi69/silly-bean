@@ -4,6 +4,11 @@
 Version 1.3-SNAPSHOT
 -------------
 
+ADDED:
+
+- new enum Premium that tags a class or field for use only with a premium permission or version
+- new decorator class that can decorate an enum class with a specified value
+
 Version 1.2
 -------------
 
