@@ -36,8 +36,8 @@ import org.meanbean.test.BeanTester;
 import io.github.astrapi69.evaluate.object.evaluators.EqualsEvaluator;
 import io.github.astrapi69.evaluate.object.evaluators.HashcodeEvaluator;
 import io.github.astrapi69.evaluate.object.evaluators.ToStringEvaluator;
-import io.github.astrapi69.test.objects.enums.Brands;
-import io.github.astrapi69.test.objects.enums.Gender;
+import io.github.astrapi69.test.object.enumtype.Brand;
+import io.github.astrapi69.test.object.enumtype.Gender;
 
 /**
  * The unit test class for the class {@link DecoratedEnum}
@@ -54,8 +54,8 @@ public class DecoratedEnumTest
 	{
 		String expected;
 		String actual;
-		Brands ferrari = Brands.FERRARI;
-		DecoratedEnum<Brands, String> cenum = DecoratedEnum.<Brands, String> builder()
+		Brand ferrari = Brand.FERRARI;
+		DecoratedEnum<Brand, String> cenum = DecoratedEnum.<Brand, String> builder()
 			.enumtype(ferrari).build();
 		actual = cenum.name();
 		expected = ferrari.name();
@@ -72,7 +72,7 @@ public class DecoratedEnumTest
 		String expected;
 		String actual;
 		String newEnumValue = "JAGUAR";
-		DecoratedEnum<Brands, String> cenum = DecoratedEnum.<Brands, String> builder()
+		DecoratedEnum<Brand, String> cenum = DecoratedEnum.<Brand, String> builder()
 			.value(newEnumValue).build();
 		actual = cenum.name();
 		expected = newEnumValue;
@@ -89,8 +89,8 @@ public class DecoratedEnumTest
 		String expected;
 		String actual;
 		String newEnumValue = "JAGUAR";
-		Brands ferrari = Brands.FERRARI;
-		DecoratedEnum<Brands, String> decoratedEnum = DecoratedEnum.<Brands, String> builder()
+		Brand ferrari = Brand.FERRARI;
+		DecoratedEnum<Brand, String> decoratedEnum = DecoratedEnum.<Brand, String> builder()
 			.value(newEnumValue).enumtype(ferrari).build();
 
 		actual = decoratedEnum.name();
@@ -108,7 +108,7 @@ public class DecoratedEnumTest
 		String expected;
 
 		NullPointerException exception = Assertions.assertThrows(NullPointerException.class,
-			() -> DecoratedEnum.<Brands, String> builder().build());
+			() -> DecoratedEnum.<Brand, String> builder().build());
 		expected = null;
 		actual = exception.getMessage();
 		assertEquals(expected, actual);
@@ -120,19 +120,19 @@ public class DecoratedEnumTest
 	@Test
 	public void testEqualsObject()
 	{
-		Brands ferrari = Brands.FERRARI;
-		final DecoratedEnum<Brands, String> expected = DecoratedEnum.<Brands, String> builder()
+		Brand ferrari = Brand.FERRARI;
+		final DecoratedEnum<Brand, String> expected = DecoratedEnum.<Brand, String> builder()
 			.enumtype(ferrari).build();
 		final DecoratedEnum<Gender, String> actual = DecoratedEnum.<Gender, String> builder()
 			.enumtype(Gender.MALE).build();
 
 		assertNotSame(expected, actual);
-		final DecoratedEnum<Brands, String> brandEnum = new DecoratedEnum<>(ferrari, null);
+		final DecoratedEnum<Brand, String> brandEnum = new DecoratedEnum<>(ferrari, null);
 		assertEquals(expected, brandEnum);
 		assertTrue(
 			EqualsEvaluator.evaluateReflexivityNonNullSymmetricAndConsistency(expected, brandEnum));
 		assertTrue(EqualsEvaluator.evaluateReflexivityNonNullSymmetricConsistencyAndTransitivity(
-			expected, brandEnum, new DecoratedEnum<Brands, String>(Brands.FERRARI, null)));
+			expected, brandEnum, new DecoratedEnum<Brand, String>(Brand.FERRARI, null)));
 	}
 
 	/**
@@ -143,8 +143,8 @@ public class DecoratedEnumTest
 	{
 		boolean expected;
 		boolean actual;
-		Brands ferrari = Brands.FERRARI;
-		final DecoratedEnum<Brands, String> integerBox = DecoratedEnum.<Brands, String> builder()
+		Brand ferrari = Brand.FERRARI;
+		final DecoratedEnum<Brand, String> integerBox = DecoratedEnum.<Brand, String> builder()
 			.enumtype(ferrari).build();
 		DecoratedEnum<Gender, String> stringBox = DecoratedEnum.<Gender, String> builder()
 			.enumtype(Gender.MALE).build();
@@ -173,8 +173,8 @@ public class DecoratedEnumTest
 		expected = true;
 		assertEquals(expected, actual);
 
-		Brands ferrari = Brands.FERRARI;
-		final DecoratedEnum<Brands, String> integerBox = DecoratedEnum.<Brands, String> builder()
+		Brand ferrari = Brand.FERRARI;
+		final DecoratedEnum<Brand, String> integerBox = DecoratedEnum.<Brand, String> builder()
 			.enumtype(ferrari).build();
 		actual = ToStringEvaluator.evaluateConsistency(integerBox);
 		expected = true;

@@ -9,6 +9,7 @@ ADDED:
 - new unit test framework junit-jupiter-api(junit5)
 - new enum Premium that tags a class or field for use only with a premium permission or version
 - new decorator class that can decorate an enum class with a specified value
+- new module-info.java file for modularize this repository
 
 CHANGED:
 
@@ -16,6 +17,9 @@ CHANGED:
 - update gradle to new version 7.5.1
 - remove of unit test framework testng
 - rename of module and repository from plural-form silly-beans to singular-form silly-bean
+- update of test dependency jobj-contract-verifier version to 3.5
+- update of test dependency silly-collections version to 19
+- update of test dependency test-object version to 7
 
 Version 1.2
 -------------

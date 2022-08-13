@@ -30,9 +30,9 @@ import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.collection.pair.Triple;
-import io.github.astrapi69.test.objects.Customer;
-import io.github.astrapi69.test.objects.Employee;
-import io.github.astrapi69.test.objects.Person;
+import io.github.astrapi69.test.object.Customer;
+import io.github.astrapi69.test.object.Employee;
+import io.github.astrapi69.test.object.Person;
 
 /**
  * The unit test class for the class {@link TripleComparator}.

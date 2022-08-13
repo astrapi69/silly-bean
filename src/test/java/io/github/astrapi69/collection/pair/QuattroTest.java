@@ -31,10 +31,10 @@ import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
-import io.github.astrapi69.test.objects.Customer;
-import io.github.astrapi69.test.objects.Employee;
-import io.github.astrapi69.test.objects.Person;
-import io.github.astrapi69.test.objects.enums.Brands;
+import io.github.astrapi69.test.object.Customer;
+import io.github.astrapi69.test.object.Employee;
+import io.github.astrapi69.test.object.Person;
+import io.github.astrapi69.test.object.enumtype.Brand;
 
 /**
  * The unit test class for the class {@link Quattro}.
@@ -55,22 +55,22 @@ public class QuattroTest
 
 		final Customer customer = Customer.builder().build();
 
-		final Brands ferrari = Brands.FERRARI;
+		final Brand ferrari = Brand.FERRARI;
 
 		final Person person = Person.builder().name("John").married(Boolean.FALSE).build();
 
 		final Employee employee = Employee.builder().id("20").person(person).build();
 
-		final Quattro<Integer, Employee, Customer, Brands> first = Quattro
-			.<Integer, Employee, Customer, Brands> builder().topLeft(1).topRight(employee)
+		final Quattro<Integer, Employee, Customer, Brand> first = Quattro
+			.<Integer, Employee, Customer, Brand> builder().topLeft(1).topRight(employee)
 			.bottomLeft(customer).bottomRight(ferrari).build();
-		final Quattro<String, Employee, Customer, Brands> second = Quattro
-			.<String, Employee, Customer, Brands> builder().topLeft("left").topRight(employee)
+		final Quattro<String, Employee, Customer, Brand> second = Quattro
+			.<String, Employee, Customer, Brand> builder().topLeft("left").topRight(employee)
 			.bottomLeft(customer).bottomRight(ferrari).build();
 		Integer topLeft = 1;
-		final Quattro<Integer, Employee, Customer, Brands> third = new Quattro<>(customer, ferrari,
+		final Quattro<Integer, Employee, Customer, Brand> third = new Quattro<>(customer, ferrari,
 			topLeft, employee);
-		final Quattro<Integer, Employee, Customer, Brands> fourth = new Quattro<>();
+		final Quattro<Integer, Employee, Customer, Brand> fourth = new Quattro<>();
 		fourth.setTopLeft(1);
 		fourth.setTopRight(employee);
 		fourth.setBottomLeft(customer);
