@@ -55,14 +55,14 @@ Than you can add the dependency to your dependencies:
 
     <properties>
             ...
-        <!-- SILLY-BEANS version -->
-        <silly-bean.version>1.2</silly-bean.version>
+        <!-- SILLY-BEAN version -->
+        <silly-bean.version>2</silly-bean.version>
             ...
     </properties>
             ...
         <dependencies>
             ...
-            <!-- SILLY-BEANS DEPENDENCY -->
+            <!-- SILLY-BEAN DEPENDENCY -->
             <dependency>
                 <groupId>io.github.astrapi69</groupId>
                 <artifactId>silly-bean</artifactId>
@@ -79,7 +79,7 @@ You can first define the version in the ext section and add than the following g
 ```
 ext {
             ...
-    sillyBeanVersion = "1.2"
+    sillyBeanVersion = "2"
             ...
 }
 dependencies {
