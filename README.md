@@ -1,8 +1,8 @@
 # Overview
 
-<div align="center">
+<div style="text-align: center">
 
-[![Build Status](https://travis-ci.org/astrapi69/silly-bean.svg?branch=develop)](https://travis-ci.org/astrapi69/silly-bean)
+[![Java CI with Gradle](https://github.com/astrapi69/silly-bean/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/silly-bean/actions/workflows/gradle.yml)
 [![Coverage Status](https://coveralls.io/repos/github/astrapi69/silly-bean/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/silly-bean?branch=develop)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/silly-bean.svg?style=flat)](https://github.com/astrapi69/silly-bean/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/silly-bean/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/silly-bean)
@@ -115,12 +115,6 @@ Do not hesitate to contact the silly-bean developers with your questions, concer
 - Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/silly-bean/issues).
 
 ## Credits
-
-|**Travis CI**|
-|     :---:      |
-|[![Travis CI](https://travis-ci.com/images/logos/TravisCI-Full-Color.png)](https://coveralls.io/github/astrapi69/silly-bean?branch=develop)|
-|Special thanks to [Travis CI](https://travis-ci.org) for providing a free continuous integration service for open source projects|
-|     <img width=1000/>     |
 
 |**Nexus Sonatype repositories**|
 |     :---:      |
