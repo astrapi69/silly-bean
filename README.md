@@ -5,8 +5,8 @@
 [![Java CI with Gradle](https://github.com/astrapi69/silly-bean/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/silly-bean/actions/workflows/gradle.yml)
 [![Coverage Status](https://coveralls.io/repos/github/astrapi69/silly-bean/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/silly-bean?branch=develop)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/silly-bean.svg?style=flat)](https://github.com/astrapi69/silly-bean/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/silly-bean/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/silly-bean)
-[![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/silly-bean.svg)](http://www.javadoc.io/doc/de.alpharogroup/silly-bean)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean)
+[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/silly-bean.svg)](http://www.javadoc.io/doc/io.github.astrapi69/silly-bean)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
 
@@ -47,7 +47,7 @@ The source code comes under the liberal MIT License, making silly-bean great for
 ## Maven dependency
 
 Maven dependency is now on sonatype.
-Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~de.alpharogroup~silly-bean~~~) for latest snapshots and releases.
+Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~silly-bean~~~) for latest snapshots and releases.
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of silly-bean:
 
@@ -118,7 +118,7 @@ Do not hesitate to contact the silly-bean developers with your questions, concer
 
 |**Nexus Sonatype repositories**|
 |     :---:      |
-|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/de.alpharogroup/silly-bean.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~de.alpharogroup~silly-bean~~~)|
+|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/io.github.astrapi69/silly-bean.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~silly-bean~~~)|
 |Special thanks to [sonatype repository](https://www.sonatype.com) for providing a free maven repository service for open source projects|
 |     <img width=1000/>     |
 
@@ -130,6 +130,6 @@ Do not hesitate to contact the silly-bean developers with your questions, concer
 
 |**javadoc.io**|
 |     :---:      |
-|[![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/silly-bean.svg)](http://www.javadoc.io/doc/de.alpharogroup/silly-bean)|
+|[![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/silly-bean.svg)](http://www.javadoc.io/doc/io.github.astrapi69/silly-bean)|
 |Special thanks to [javadoc.io](http://www.javadoc.io) for providing a free javadoc documentation for open source projects|
 |     <img width=1000/>     |
