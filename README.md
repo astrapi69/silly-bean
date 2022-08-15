@@ -3,7 +3,7 @@
 <div style="text-align: center">
 
 [![Java CI with Gradle](https://github.com/astrapi69/silly-bean/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/silly-bean/actions/workflows/gradle.yml)
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/silly-bean/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/silly-bean?branch=develop)
+[![Coverage Status](https://codecov.io/gh/astrapi69/silly-bean/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/silly-bean)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/silly-bean.svg?style=flat)](https://github.com/astrapi69/silly-bean/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/silly-bean.svg)](http://www.javadoc.io/doc/io.github.astrapi69/silly-bean)
