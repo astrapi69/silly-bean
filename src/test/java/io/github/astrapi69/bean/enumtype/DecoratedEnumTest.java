@@ -36,8 +36,8 @@ import org.meanbean.test.BeanTester;
 import io.github.astrapi69.evaluate.object.evaluators.EqualsEvaluator;
 import io.github.astrapi69.evaluate.object.evaluators.HashcodeEvaluator;
 import io.github.astrapi69.evaluate.object.evaluators.ToStringEvaluator;
-import io.github.astrapi69.test.object.enumtype.Brand;
-import io.github.astrapi69.test.object.enumtype.Gender;
+import io.github.astrapi69.test.object.enumeration.Brand;
+import io.github.astrapi69.test.object.enumeration.Gender;
 
 /**
  * The unit test class for the class {@link DecoratedEnum}
