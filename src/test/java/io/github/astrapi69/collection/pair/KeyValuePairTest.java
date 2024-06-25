@@ -37,9 +37,9 @@ import java.util.Properties;
 
 import org.junit.jupiter.api.Test;
 
-import io.github.astrapi69.evaluate.object.evaluators.EqualsEvaluator;
-import io.github.astrapi69.evaluate.object.evaluators.HashcodeEvaluator;
-import io.github.astrapi69.evaluate.object.evaluators.ToStringEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.EqualsEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.HashcodeEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.ToStringEvaluator;
 
 /**
  * The unit test class for the class {@link KeyValuePair}

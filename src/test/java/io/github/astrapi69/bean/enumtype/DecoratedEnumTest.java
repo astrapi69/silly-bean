@@ -33,9 +33,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.evaluate.object.evaluators.EqualsEvaluator;
-import io.github.astrapi69.evaluate.object.evaluators.HashcodeEvaluator;
-import io.github.astrapi69.evaluate.object.evaluators.ToStringEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.EqualsEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.HashcodeEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.ToStringEvaluator;
 import io.github.astrapi69.test.object.enumeration.Brand;
 import io.github.astrapi69.test.object.enumeration.Gender;
 

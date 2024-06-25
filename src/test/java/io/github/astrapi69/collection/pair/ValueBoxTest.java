@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.EqualsHashCodeAndToStringEvaluator;
 
 /**
  * The unit test class for the class {@link ValueBox}.
