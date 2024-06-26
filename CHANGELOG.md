@@ -13,7 +13,7 @@ CHANGED:
 - update gradle to new version 8.8
 - update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new minor version 7.0.0.BETA1
 - update of test dependency junit-jupiter-api to new version 5.11.0-M2
-- update of test dependency jobj-contract-verifier version to new major version 4
+- update of test dependency jobj-contract-verifier version to new minor version 5.1
 
 Version 2
 -------------
