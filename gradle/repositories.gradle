@@ -1,8 +1,8 @@
 repositories {
     mavenLocal()
+    mavenCentral()
     maven {
         name = "github jobj-contract-verifier releases"
         url "https://github.com/astrapi69/jobj-contract-verifier/raw/master/releases"
     }
-    mavenCentral()
 }
