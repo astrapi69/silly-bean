@@ -22,6 +22,9 @@ repositories {
             snapshotsOnly()
         }
     }
+    /**
+     * This repository is for jobj-contract-verifier release versions
+     **/
     maven {
         name = "github jobj-contract-verifier releases"
         url "https://github.com/astrapi69/jobj-contract-verifier/raw/master/releases"
