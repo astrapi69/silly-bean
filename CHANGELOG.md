@@ -10,10 +10,12 @@ ADDED:
 
 CHANGED:
 
-- update gradle to new version 8.8
+- update gradle to new version 8.10
 - update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new minor version 7.0.0.BETA1
-- update of test dependency junit-jupiter-api to new version 5.11.0-M2
-- update of test dependency jobj-contract-verifier version to new minor version 5.1
+- update of test dependency junit-jupiter to new version 5.11.0
+- update of test dependency junit-platform-launcher to new version 1.11.0
+- update of test dependency jobj-contract-verifier version to new minor version 5.2
+- update of test dependency commons-lang3 version to 3.16.0
 - replaced obsolete package.html with package-info.java files
 
 Version 2
