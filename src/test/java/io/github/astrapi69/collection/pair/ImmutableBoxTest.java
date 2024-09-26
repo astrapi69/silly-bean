@@ -32,10 +32,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import io.github.astrapi69.evaluate.object.evaluators.EqualsEvaluator;
-import io.github.astrapi69.evaluate.object.evaluators.HashcodeEvaluator;
-import io.github.astrapi69.evaluate.object.evaluators.ToStringEvaluator;
-import io.github.astrapi69.evaluate.object.verifier.ContractVerifier;
+import io.github.astrapi69.evaluate.object.evaluator.EqualsEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.HashcodeEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.ToStringEvaluator;
 
 /**
  * The unit test class for the class {@link ImmutableBox}.
@@ -118,17 +117,6 @@ public class ImmutableBoxTest
 		actual = ToStringEvaluator.evaluateConsistency(integerBox);
 		expected = true;
 		assertEquals(expected, actual);
-	}
-
-	/**
-	 * Test method for verify the contracts of {@link ImmutableBox#equals(Object)} ,
-	 * {@link ImmutableBox#hashCode()} and {@link ImmutableBox#toString()}
-	 */
-	@Test
-	@Disabled
-	public void verifyEqualsHashcodeAndToStringContracts()
-	{
-		ContractVerifier.of(ImmutableBox.class).verify();
 	}
 
 }

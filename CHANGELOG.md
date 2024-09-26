@@ -1,6 +1,28 @@
 ## Change log
 ----------------------
 
+Version 3.0
+-------------
+
+ADDED:
+
+- new libs.versions.toml file for new automatic catalog versions update
+- new project structure
+
+CHANGED:
+
+- module name from 'silly.bean.main' to new 'io.github.astrapisixtynine.silly.bean'
+- update gradle to new version 8.10.2
+- update of gradle-plugin dependency 'com.diffplug.spotless:spotless-plugin-gradle' to new minor version 7.0.0.BETA1
+- update of test dependency junit-jupiter to new version 5.11.1
+- update of test dependency junit-platform-launcher to new version 1.11.1
+- update of test dependency jobj-contract-verifier version to new minor version 5.2
+- update of test dependency commons-lang3 version to 3.17.0
+- update of test dependency silly-collection to new major version 28
+- update of test dependency test-object version to new major version 9
+- moved the enums to new package 'io.github.astrapi69.bean.enumeration'
+- replaced obsolete package.html with package-info.java files
+
 Version 2
 -------------
 

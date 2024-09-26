@@ -30,11 +30,11 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.EqualsHashCodeAndToStringEvaluator;
 import io.github.astrapi69.test.object.Customer;
 import io.github.astrapi69.test.object.Employee;
 import io.github.astrapi69.test.object.Person;
-import io.github.astrapi69.test.object.enumtype.Brand;
+import io.github.astrapi69.test.object.enumeration.Brand;
 
 /**
  * The unit test class for the class {@link Quattro}.

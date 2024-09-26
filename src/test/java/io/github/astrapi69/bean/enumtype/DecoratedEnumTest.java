@@ -33,11 +33,12 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.evaluate.object.evaluators.EqualsEvaluator;
-import io.github.astrapi69.evaluate.object.evaluators.HashcodeEvaluator;
-import io.github.astrapi69.evaluate.object.evaluators.ToStringEvaluator;
-import io.github.astrapi69.test.object.enumtype.Brand;
-import io.github.astrapi69.test.object.enumtype.Gender;
+import io.github.astrapi69.bean.enumeration.DecoratedEnum;
+import io.github.astrapi69.evaluate.object.evaluator.EqualsEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.HashcodeEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.ToStringEvaluator;
+import io.github.astrapi69.test.object.enumeration.Brand;
+import io.github.astrapi69.test.object.enumeration.Gender;
 
 /**
  * The unit test class for the class {@link DecoratedEnum}
@@ -152,12 +153,10 @@ public class DecoratedEnumTest
 		expected = true;
 		assertEquals(expected, actual);
 
-		expected = true;
 		actual = HashcodeEvaluator.evaluateUnequality(integerBox, stringBox);
 		assertEquals(expected, actual);
 
 		actual = HashcodeEvaluator.evaluateConsistency(integerBox);
-		expected = true;
 		assertEquals(expected, actual);
 	}
 

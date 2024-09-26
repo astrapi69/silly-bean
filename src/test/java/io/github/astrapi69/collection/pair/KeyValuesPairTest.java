@@ -34,7 +34,7 @@ import org.junit.jupiter.api.Test;
 
 import io.github.astrapi69.collection.list.ListFactory;
 import io.github.astrapi69.collection.set.SetFactory;
-import io.github.astrapi69.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
+import io.github.astrapi69.evaluate.object.evaluator.EqualsHashCodeAndToStringEvaluator;
 import io.github.astrapi69.test.object.Customer;
 import io.github.astrapi69.test.object.Employee;
 import io.github.astrapi69.test.object.Person;

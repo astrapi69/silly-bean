@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.bean.enumtype;
+package io.github.astrapi69.bean.enumeration;
 
 import java.util.Objects;
 
@@ -145,7 +145,7 @@ public final class DecoratedEnum<E extends Enum<E>, T>
 
 		public DecoratedEnum<E, T> build()
 		{
-			return new DecoratedEnum<E, T>(enumtype, value);
+			return new DecoratedEnum<>(enumtype, value);
 		}
 
 		public String toString()

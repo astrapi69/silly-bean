@@ -29,12 +29,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.evaluate.object.evaluators.EqualsHashCodeAndToStringEvaluator;
-import io.github.astrapi69.evaluate.object.verifier.ContractVerifier;
+import io.github.astrapi69.evaluate.object.evaluator.EqualsHashCodeAndToStringEvaluator;
 import io.github.astrapi69.test.object.Customer;
 import io.github.astrapi69.test.object.Employee;
 import io.github.astrapi69.test.object.Person;
@@ -91,17 +89,6 @@ public class KeyMapPairTest
 	{
 		final BeanTester beanTester = new BeanTester();
 		beanTester.testBean(KeyMapPair.class);
-	}
-
-	/**
-	 * Test method for verify the contracts of {@link KeyMapPair#equals(Object)} ,
-	 * {@link KeyMapPair#hashCode()} and {@link KeyMapPair#toString()}
-	 */
-	@Test
-	@Disabled
-	public void verifyEqualsHashcodeAndToStringContracts()
-	{
-		ContractVerifier.of(KeyMapPair.class).verify();
 	}
 
 }
