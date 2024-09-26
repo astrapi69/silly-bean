@@ -1,16 +1,16 @@
 [versions]
-commons-lang3-version = "3.16.0"
+commons-lang3-version = "3.17.0"
 gradle-plugin-grgit-version = "5.2.2"
 gradle-plugin-license-version = "0.16.1"
-gradle-plugin-spotless-version = "7.0.0.BETA1"
+gradle-plugin-spotless-version = "7.0.0.BETA2"
 gradle-plugin-version-catalog-update-version = "0.8.4"
 gradle-plugin-versions-version = "0.51.0"
 jobj-contract-verifier-version = "5.2"
-junit-jupiter-version = "5.11.0"
-junit-platform-launcher-version = "1.11.0"
+junit-jupiter-version = "5.11.1"
+junit-platform-launcher-version = "1.11.1"
 meanbean-version = "2.0.3"
-silly-collection-version = "27.1"
-test-object-version = "8.2"
+silly-collection-version = "28"
+test-object-version = "9"
 
 [libraries]
 commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commons-lang3-version" }
