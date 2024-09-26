@@ -44,50 +44,137 @@ No animals were harmed in the making of this library.
 
 The source code comes under the liberal MIT License, making silly-bean great for all types of applications.
 
+## Import dependencies to your project
+
+<details>
+  <summary>gradle (click to expand)</summary>
+
+## gradle dependency
+
+Replace the variable ${latestVersion} with the current latest
+version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean)
+
+You can first define the version in the ext section and add than the following gradle dependency to
+your project `build.gradle` if you want to import the core functionality of silly-bean:
+
+define version in file gradle.properties
+
+```
+sillyBeanVersion=${latestVersion}
+```
+
+or in build.gradle ext area
+
+```
+    sillyBeanVersion = "${latestVersion}"
+```
+
+then add the dependency to the dependencies area
+
+```
+    implementation("io.github.astrapi69:silly-bean:$sillyBeanVersion")
+```
+
+# with new libs.versions.toml file
+
+If you use the new libs.versions.toml file for new automatic catalog versions update
+
+```
+[versions]
+```
+```
+silly-bean-version= "${latestVersion}"
+```
+```
+[libraries]
+```
+```
+silly-bean = { module = "io.github.astrapi69:silly-bean", version.ref = "silly-bean-version" }
+```
+
+then add the dependency to the dependencies area
+
+```
+    implementation libs.silly.bean
+```
+
+</details>
+
+<details>
+  <summary>Maven (click to expand)</summary>
+
 ## Maven dependency
 
 Maven dependency is now on sonatype.
-Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~silly-bean~~~) for latest snapshots and releases.
+Check
+out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~silly-bean~~~)
+for latest snapshots and releases.
 
-Add the following maven dependency to your project `pom.xml` if you want to import the core functionality of silly-bean:
+Add the following maven dependency to your project `pom.xml` if you want to import the core
+functionality of silly-bean:
 
-Than you can add the dependency to your dependencies:
+Then you can add the dependency to your dependencies:
 
     <properties>
-            ...
-        <!-- SILLY-BEAN version -->
-        <silly-bean.version>2</silly-bean.version>
-            ...
+        ...
+
+```xml
+        <!-- silly-bean version -->
+        <silly-bean.version>${latestVersion}</silly-bean.version>
+```
+
+        ...
     </properties>
-            ...
+        ...
         <dependencies>
-            ...
-            <!-- SILLY-BEAN DEPENDENCY -->
+        ...
+
+```xml
+            <!-- silly-bean DEPENDENCY -->
             <dependency>
                 <groupId>io.github.astrapi69</groupId>
                 <artifactId>silly-bean</artifactId>
                 <version>${silly-bean.version}</version>
             </dependency>
-            ...
+```
+
+        ...
         </dependencies>
 
+</details>
 
-## gradle dependency
 
-You can first define the version in the ext section and add than the following gradle dependency to your project `build.gradle` if you want to import the core functionality of silly-bean:
+<details>
+  <summary>Snapshots (click to expand)</summary>
+
+## 📸 Snapshots
+
+[![Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://oss.sonatype.org/service/local/repositories/snapshots/content/io/github/astrapi69/silly-bean/maven-metadata.xml&label=snapshot&color=red&query=.//versioning/latest)](https://oss.sonatype.org/content/repositories/snapshots/io/github/astrapi69/silly-bean/)
+
+This section describes how to import snapshot versions into your project.
+Add the following code snippet to your gradle file in the repositories section:
 
 ```
-ext {
-            ...
-    sillyBeanVersion = "2"
-            ...
-}
-dependencies {
-            ...
-implementation("io.github.astrapi69:silly-bean:$sillyBeanVersion")
-            ...
+repositories {
+   //...
+```
+
+```groovy
+    maven {
+        name "Sonatype Nexus Snapshots"
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
+```
+
+```
 }
 ```
+
+</details>
+
 
 ## Semantic Versioning
 
