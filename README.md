@@ -5,7 +5,7 @@
 [![Java CI with Gradle](https://github.com/astrapi69/silly-bean/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/silly-bean/actions/workflows/gradle.yml)
 [![Coverage Status](https://codecov.io/gh/astrapi69/silly-bean/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/silly-bean)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/silly-bean.svg?style=flat)](https://github.com/astrapi69/silly-bean/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.astrapi69/silly-bean)](https://central.sonatype.com/artifact/io.github.astrapi69/silly-bean)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/silly-bean.svg)](http://www.javadoc.io/doc/io.github.astrapi69/silly-bean)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
@@ -40,7 +40,7 @@ The source code comes under the liberal MIT License, making silly-bean great for
 ## gradle dependency
 
 Replace the variable ${latestVersion} with the current latest
-version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/silly-bean)
+version: [![Maven Central](https://img.shields.io/maven-central/v/io.github.astrapi69/silly-bean)](https://central.sonatype.com/artifact/io.github.astrapi69/silly-bean)
 
 You can first define the version in the ext section and add than the following gradle dependency to
 your project `build.gradle` if you want to import the core functionality of silly-bean:
@@ -93,10 +93,7 @@ then add the dependency to the dependencies area
 
 ## Maven dependency
 
-Maven dependency is now on sonatype.
-Check
-out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~silly-bean~~~)
-for latest snapshots and releases.
+The library is on Maven Central. Check out [Maven Central](https://central.sonatype.com/artifact/io.github.astrapi69/silly-bean) for the latest release.
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core
 functionality of silly-bean:
@@ -137,8 +134,6 @@ Then you can add the dependency to your dependencies:
 
 ## 📸 Snapshots
 
-[![Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://oss.sonatype.org/service/local/repositories/snapshots/content/io/github/astrapi69/silly-bean/maven-metadata.xml&label=snapshot&color=red&query=.//versioning/latest)](https://oss.sonatype.org/content/repositories/snapshots/io/github/astrapi69/silly-bean/)
-
 This section describes how to import snapshot versions into your project.
 Add the following code snippet to your gradle file in the repositories section:
 
@@ -149,8 +144,8 @@ repositories {
 
 ```groovy
     maven {
-        name "Sonatype Nexus Snapshots"
-        url "https://oss.sonatype.org/content/repositories/snapshots"
+        name "Central Portal Snapshots"
+        url "https://central.sonatype.com/repository/maven-snapshots/"
         mavenContent {
             snapshotsOnly()
         }
@@ -191,9 +186,9 @@ Do not hesitate to contact the silly-bean developers with your questions, concer
 
 ## Credits
 
-|**Nexus Sonatype repositories**|
+|**Maven Central**|
 |     :---:      |
-|[![sonatype repository](https://img.shields.io/nexus/r/https/oss.sonatype.org/io.github.astrapi69/silly-bean.svg?style=for-the-badge)](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~silly-bean~~~)|
+|[![Maven Central](https://img.shields.io/maven-central/v/io.github.astrapi69/silly-bean?style=for-the-badge)](https://central.sonatype.com/artifact/io.github.astrapi69/silly-bean)|
 |Special thanks to [sonatype repository](https://www.sonatype.com) for providing a free maven repository service for open source projects|
 |     <img width=1000/>     |
 
