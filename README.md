@@ -16,25 +16,13 @@ Utility library that provides some generic data beans like pair, triple and quat
 
 If you like this project put a ⭐ and donate
 
-# Donations
+## Support this project
 
-If you like this library, please consider a donation through paypal: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MJ7V43GU2H386" target="_blank">
-<img src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" alt="PayPal this" title="PayPal – The safer, easier way to pay online!" border="0" />
-</a>
+If silly-bean is useful to you, a star on [GitHub](https://github.com/astrapi69/silly-bean) helps others find it.
+Sharing it or reporting a bug helps just as much.
 
-or over bitcoin or bitcoin-cash with:
-
-36JxRRDfRazLNqUV6NsywCw1q7TK38ukpC
-
-or over ether with:
-
-0x588Aa02De98B1Ef70afeDC3ec5290130a3E5e273
-
-or over flattr:
-
-<a href="http://flattr.com/thing/4067696/astrapi69silly-bean-on-GitHub" target="_blank">
-<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" />
-</a>
+If you would like to contribute financially, the channels are on the repository's Sponsor button, which
+reads [.github/FUNDING.yml](.github/FUNDING.yml): GitHub Sponsors, Liberapay, Ko-fi and PayPal.
 
 ## Note
 
