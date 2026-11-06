@@ -10,23 +10,24 @@ jacocoTestReport {
     }
 }
 
-// Coverage floor the build fails below (#19). Measured on 2026-11-06 (develop c792212, Temurin 25.0.5+8):
-// 477 of 544 lines, 87.7 %, and 142 of 260 branches, 54.6 %. The floor is each measure minus about two
-// points, rounded down, as for the mutation score in build.gradle: a few lines or branches that a new
-// method's tests do not reach yet do not fail the build at once, a drop of more than about two points does.
-// With the 544 lines of today it fails from 15 more missed lines on, with the 260 branches from 7 more.
+// Coverage floor the build fails below (#19, raised with #33). Measured on 2026-11-06 after the parameterized
+// tests of 4.0 (develop b681a29, Temurin 25.0.5+8): 547 of 547 lines, 100 %, and 259 of 260 branches, 99.6 %; the
+// missed branch is the one of KeySetPair.KeySetPairBuilder.build() for 2^30 values or more. The floor is each
+// measure minus about two points, rounded down, as for the mutation score in build.gradle: a few lines or branches
+// that a new method's tests do not reach yet do not fail the build at once, a drop of more than about two points
+// does. With the 547 lines of today it fails from 11 missed lines on, with the 260 branches from 8 missed branches.
 jacocoTestCoverageVerification {
     violationRules {
         rule {
             limit {
                 counter = 'LINE'
                 value = 'COVEREDRATIO'
-                minimum = 0.85
+                minimum = 0.98
             }
             limit {
                 counter = 'BRANCH'
                 value = 'COVEREDRATIO'
-                minimum = 0.52
+                minimum = 0.97
             }
         }
     }
