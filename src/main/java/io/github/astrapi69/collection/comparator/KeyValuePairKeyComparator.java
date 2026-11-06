@@ -43,6 +43,14 @@ public class KeyValuePairKeyComparator<K extends Comparable<K>, V>
 {
 
 	/**
+	 * Instantiates a new {@link KeyValuePairKeyComparator}, which compares {@link KeyValuePair}
+	 * objects by their key.
+	 */
+	public KeyValuePairKeyComparator()
+	{
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
