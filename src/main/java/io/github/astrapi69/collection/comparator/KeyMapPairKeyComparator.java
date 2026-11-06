@@ -45,6 +45,14 @@ public class KeyMapPairKeyComparator<K extends Comparable<K>, MK, MV>
 {
 
 	/**
+	 * Instantiates a new {@link KeyMapPairKeyComparator}, which compares {@link KeyMapPair} objects
+	 * by their key.
+	 */
+	public KeyMapPairKeyComparator()
+	{
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
