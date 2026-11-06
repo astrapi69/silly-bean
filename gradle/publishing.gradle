@@ -9,15 +9,22 @@ task sourcesJar(type: Jar) {
 task javadocJar(type: Jar) {
     from javadoc
     archiveClassifier.set("javadoc")
-    javadoc.properties.failOnError = true
 }
 
+// A javadoc warning fails the build (#22, as astrapi69/comparator-extensions#32 and astrapi69/silly-collection#96,
+// the family's rule of 2026-11-05): -Werror turns each warning into an error, failOnError lets that error fail the
+// task, and check depends on javadoc, so that `./gradlew build` and CI run it. failOnError was false: this block set
+// it so, and the line "javadoc.properties.failOnError = true" in javadocJar wrote into a copy of the task's
+// properties, which changed nothing. A text search for "warning" misses the German "Warnung".
 javadoc {
-    failOnError = false
+    failOnError = true
+    options.addBooleanOption("Werror", true)
     if(JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption("html5", true)
     }
 }
+
+check.dependsOn javadoc
 
 publishing {
     publications {
