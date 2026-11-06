@@ -9,7 +9,7 @@ VERSION := $(shell sed -n 's/^projectVersion=//p' gradle.properties)
 
 .DEFAULT_GOAL := help
 
-.PHONY: help build build-fast test clean spotless spotless-java spotless-misc pitest pitest-status \
+.PHONY: help build build-fast test clean spotless spotless-java spotless-misc pitest pitest-status check-reproducible \
 	jacoco-coverage jacoco-report jar javadoc dependencies dependency-updates \
 	version-catalog-format version-catalog-update publish-local tag-release
 
@@ -28,6 +28,7 @@ help:
 	@echo "  pitest                  PIT on GitHub, not here: starts mutation-testing.yml for the current"
 	@echo "                          branch, which has to be pushed, and prints how to follow the run"
 	@echo "  pitest-status           the summary of the newest Mutation testing run of the current branch"
+	@echo "  check-reproducible      build the five artifacts twice and compare them (scripts/check-reproducible.sh)"
 	@echo "  jacoco-coverage         verify the coverage thresholds"
 	@echo "  jacoco-report           write the coverage report"
 	@echo ""
@@ -111,6 +112,11 @@ pitest-status:
 	printf '\n%s\n\n' "$$summary"; \
 	echo "PIT's report:  gh run download $$run -n pitest-report -D <directory>  (the artifact pitest-report)"
 
+# the five artifacts a release publishes, built twice from the checked-out commit and compared by SHA-256
+# (#24, as astrapi69/silly-strings' target of the same name); JDK=<jdk home> builds both on that JDK
+check-reproducible:
+	scripts/check-reproducible.sh $(JDK)
+
 jacoco-coverage:
 	$(GRADLE) jacocoTestCoverageVerification
 
@@ -135,9 +141,8 @@ version-catalog-format:
 version-catalog-update:
 	$(GRADLE) versionCatalogUpdate
 
-# Called by name only; no other target runs it. gradle/repositories.gradle asks mavenLocal() before
-# Maven Central, so what lies in the local Maven repository stands in for what Central serves, for this
-# library and for its dependencies, and the release gate needs an empty one (README.md, "Releasing").
+# Called by name only; no other target runs it. The release gate needs an empty local Maven repository
+# (README.md, "Releasing"), and the build reads it only with -PuseMavenLocal (gradle/repositories.gradle).
 publish-local:
 	$(GRADLE) publishToMavenLocal
 
