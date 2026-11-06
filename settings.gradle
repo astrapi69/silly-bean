@@ -1,1 +1,9 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        // io.github.astrapi69.test-results-complete is published on Maven Central (#17)
+        mavenCentral()
+    }
+}
+
 rootProject.name = 'silly-bean'
