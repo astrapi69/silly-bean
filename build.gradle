@@ -29,12 +29,16 @@ apply from: "gradle/apply-gradle-files.gradle"
 
 // Mutation-score floor the workflow "Mutation testing" fails below: it runs `./gradlew pitest` on
 // GitHub (.github/workflows/mutation-testing.yml, #19); PIT rounds the score half up to a whole
-// percent before it compares, and holds it at 99 while a mutant survives. MEASUREMENT PENDING:
-// set from the first run of the workflow on #19, that score minus about two points, rounded down.
+// percent before it compares, and holds it at 99 while a mutant survives. Measured 42 % (145 of 342
+// mutants detected) on 2026-11-06 by the first run of the workflow (#19, run 42195018925). The floor
+// is that score minus about two points, rounded down: a few mutants more that survive, such as those
+// of a new method whose tests are not complete yet, do not fail the run at once, a drop of more than
+// about two points does. With the 342 mutants of today it fails from 10 more survivors on: 135 of 342
+// is 39.5 %, which PIT rounds to 39. The parameterized tests of this milestone raise it.
 // Kept here, not in gradle/mutation-testing.gradle, so that the floor sits in the file a reader
 // (and awesome-well-tested's check) looks at.
 pitest {
-    mutationThreshold = 0
+    mutationThreshold = 40
 }
 
 java {
