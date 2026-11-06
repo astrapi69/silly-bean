@@ -1,9 +1,19 @@
 dependencies {
     testImplementation libs.jobj.contract.verifier
     testImplementation libs.test.object
-    testImplementation libs.silly.collection
     testImplementation libs.commons.lang3
     // Note: use of bundles...
     testImplementation libs.bundles.unit.testing
     testRuntimeOnly libs.junit.platform.launcher
+}
+
+// silly-collection depends on silly-bean (its MapFactory hands out KeyValuePair), and it reaches these tests through
+// jobj-contract-verifier -> randomizer, so an older silly-bean came onto the test class paths. Gradle resolves those
+// coordinates to this project itself, which put the project's own jar on them: a copy of build/classes/java/main,
+// and without a task dependency on :jar, so the test task needed mustRunAfter(jar) to pass Gradle's validation (#11,
+// as astrapi69/silly-io#62). The tests run against this project's classes alone.
+['testCompileClasspath', 'testRuntimeClasspath'].each { name ->
+    configurations.named(name) {
+        exclude group: project.group as String, module: project.name
+    }
 }
