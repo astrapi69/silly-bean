@@ -24,52 +24,101 @@
  */
 package io.github.astrapi69.collection.comparator;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.collection.pair.Triple;
-import io.github.astrapi69.test.object.Customer;
-import io.github.astrapi69.test.object.Employee;
-import io.github.astrapi69.test.object.Person;
 
 /**
- * The unit test class for the class {@link TripleComparator}.
+ * The unit test class for the class {@link TripleComparator}. The cases hold the contents only; the
+ * test builds the triples itself, so that PIT gives each case the code it runs
  */
 public class TripleComparatorTest
 {
 
-	/** For use of the result of the comparator. */
-	int actual;
-
-	/** For use of the expected result. */
-	boolean expected;
+	/**
+	 * The contents of two triples, and the sign of their comparison
+	 *
+	 * @param description
+	 *            the name of the case
+	 * @param firstLeft
+	 *            the left content of the first triple, may be null
+	 * @param firstMiddle
+	 *            the middle content of the first triple, may be null
+	 * @param firstRight
+	 *            the right content of the first triple, may be null
+	 * @param secondLeft
+	 *            the left content of the second triple, may be null
+	 * @param secondMiddle
+	 *            the middle content of the second triple, may be null
+	 * @param secondRight
+	 *            the right content of the second triple, may be null
+	 * @param sign
+	 *            the sign of the comparison of the first with the second triple
+	 */
+	record TripleCase(String description, String firstLeft, String firstMiddle, String firstRight,
+		String secondLeft, String secondMiddle, String secondRight, int sign) {
+		@Override
+		public String toString()
+		{
+			return description;
+		}
+	}
 
 	/**
-	 * Test method for {@link TripleComparator#compare(Object, Object)}
+	 * Triples that differ in one position or more
+	 *
+	 * @return the cases
 	 */
-	@Test
-	public final void testCompare()
+	static Stream<TripleCase> triples()
 	{
+		return Stream.of(new TripleCase("the same contents: zero", "a", "b", "c", "a", "b", "c", 0),
+			new TripleCase("all null in both: zero", null, null, null, null, null, null, 0),
+			new TripleCase("the smaller left first: negative", "a", "b", "c", "b", "b", "c", -1),
+			new TripleCase("the same left, the smaller middle first: negative", "a", "a", "c", "a",
+				"b", "c", -1),
+			new TripleCase("the same left and middle, the smaller right first: negative", "a", "b",
+				"a", "a", "b", "b", -1),
+			new TripleCase("the smaller left wins over a greater middle and right: negative", "a",
+				"z", "z", "b", "a", "a", -1),
+			new TripleCase("the smaller middle wins over a greater right: negative", "a", "a", "z",
+				"a", "b", "a", -1),
+			new TripleCase("a null left before a value: negative", null, "b", "c", "a", "b", "c",
+				-1),
+			new TripleCase("a null middle before a value: negative", "a", null, "c", "a", "b", "c",
+				-1),
+			new TripleCase("a null right before a value: negative", "a", "b", null, "a", "b", "c",
+				-1));
+	}
 
-		final Person person = Person.builder().name("John").married(Boolean.FALSE).build();
-
-		final Employee employee = Employee.builder().id("20").person(person).build();
-
-		Customer customer = Customer.builder().build();
-
-		Triple<Person, Employee, Customer> o1 = Triple.<Person, Employee, Customer> builder()
-			.left(person).middle(employee).right(customer).build();
-
-		Triple<Person, Employee, Customer> o2 = Triple.<Person, Employee, Customer> builder()
-			.left(person).middle(employee).right(customer).build();
-
-		TripleComparator<Person, Employee, Customer> comparator = new TripleComparator<>();
-
-		actual = comparator.compare(o1, o2);
-		expected = actual == 0;
-		assertTrue(expected);
+	/**
+	 * {@link TripleComparator#compare(Triple, Triple)} orders by the left content, then by the
+	 * middle, then by the right, null before a value, as commons-lang3's
+	 * {@link org.apache.commons.lang3.builder.CompareToBuilder} does; the other way round the sign
+	 * turns
+	 *
+	 * @param testCase
+	 *            the contents and the sign
+	 */
+	@ParameterizedTest(name = "{0}")
+	@MethodSource("triples")
+	void compareOrdersByLeftThenMiddleThenRight(final TripleCase testCase)
+	{
+		final Triple<String, String, String> first = Triple.<String, String, String> builder()
+			.left(testCase.firstLeft()).middle(testCase.firstMiddle()).right(testCase.firstRight())
+			.build();
+		final Triple<String, String, String> second = Triple.<String, String, String> builder()
+			.left(testCase.secondLeft()).middle(testCase.secondMiddle())
+			.right(testCase.secondRight()).build();
+		final TripleComparator<String, String, String> comparator = new TripleComparator<>();
+		assertEquals(testCase.sign(), Integer.signum(comparator.compare(first, second)));
+		assertEquals(-testCase.sign(), Integer.signum(comparator.compare(second, first)));
 	}
 
 	/**
