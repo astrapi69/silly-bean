@@ -39,7 +39,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          java-version: '25.0.4+7.0.LTS'
+          java-version: '25.0.5+8.0.LTS'
           distribution: 'temurin'
       - name: Check the JDK is the one .sdkmanrc names
         run: |
