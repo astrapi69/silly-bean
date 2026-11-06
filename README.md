@@ -1,5 +1,65 @@
 # silly-bean
 
+## Status: archived
+
+**silly-bean is archived and gets no further releases.** The last release is **4.0** (Java 25, on Maven Central
+since 2026-11-06); **3.0** is the last for Java 17. Both stay on Maven Central. No fixes follow, and issues and pull
+requests are closed.
+
+**Why:** since Java 16 the JDK covers what this library is for. A record is a pair, a triple or a box in one line,
+with `equals`, `hashCode` and `toString`; `Map.entry`, `AbstractMap.SimpleEntry` and `SimpleImmutableEntry` are a
+key with a value; `Comparator.comparing`, `thenComparing`, `nullsFirst` and `Map.Entry.comparingByKey` order them.
+
+### Replacements
+
+| silly-bean | In the JDK |
+|---|---|
+| `Pair<K, V>` | a record, `record Pair<L, R>(L left, R right) {}`; with a setter for the value: `AbstractMap.SimpleEntry` |
+| `Triple<L, M, R>` | a record, `record Triple<L, M, R>(L left, M middle, R right) {}` |
+| `Quattro<TL, TR, BL, BR>` | a record of four components |
+| `KeyValuePair<K, V>` | `Map.entry(key, value)` (no null key or value), `AbstractMap.SimpleImmutableEntry` or `AbstractMap.SimpleEntry` (null allowed, the latter with `setValue`) |
+| `KeyValuePair.toKeyValuePairs(Map)` | the map's `entrySet()`, or a copy of each entry as below |
+| `KeyValuePair.toKeyValuePairs(Properties)` | `properties.stringPropertyNames()`, which takes the defaults in as well, each name with `getProperty` |
+| `KeyValuePair.toMap(Collection)` | `put` each entry into the map you need: a `LinkedHashMap` keeps the order of the entries |
+| `KeyValuesPair<K, V>`, `KeySetPair<K, V>`, `KeyMapPair<K, MK, MV>` | `Map.Entry<K, List<V>>`, `Map.Entry<K, Set<V>>`, `Map.Entry<K, Map<MK, MV>>`, or a record of the key and the collection |
+| `ValueBox<T>` | `AtomicReference<T>` (`get`, `set`), or a field of the class that holds it |
+| `ImmutableBox<T>` | a record, `record Box<T>(T value) { Box { Objects.requireNonNull(value); } }`, or `Optional.of(value)` |
+| `KeyValuePairKeyComparator`, `KeyValuesPairKeyComparator`, `KeyMapPairKeyComparator` | `Map.Entry.comparingByKey()`; for a record `Comparator.comparing(Pair::left)` |
+| `DecoratedEnum<E, T>` | none in the JDK: a sealed interface that the enum and a record of the new value implement |
+| `ModeContext` | an enum of its four constants in the code that uses it |
+| `Premium` | an annotation of the code that uses it, with the `@Retention` and `@Target` it needs |
+
+**`KeyValuePair`:**
+
+```java
+Map.Entry<String, Integer> pair = Map.entry("one", 1);
+Map.Entry<String, Integer> withNull = new AbstractMap.SimpleEntry<>("two", null);
+
+List<Map.Entry<String, Integer>> pairs = new ArrayList<>();                 // toKeyValuePairs(map)
+numbers.forEach((key, value) -> pairs.add(new AbstractMap.SimpleImmutableEntry<>(key, value)));
+Map<String, Integer> map = new LinkedHashMap<>();                           // toMap(pairs), in their order
+pairs.forEach(entry -> map.put(entry.getKey(), entry.getValue()));
+```
+
+**`Triple`:**
+
+```java
+record Triple<L, M, R>(L left, M middle, R right) {}
+
+Triple<String, Integer, Boolean> triple = new Triple<>("a", 2, true);
+Triple<String, Integer, Boolean> changed = new Triple<>(triple.left(), 3, triple.right()); // toBuilder().middle(3)
+```
+
+**The key comparators:**
+
+```java
+list.sort(Map.Entry.comparingByKey());                                                    // KeyValuePairKeyComparator
+list.sort(Map.Entry.comparingByKey(Comparator.nullsFirst(Comparator.naturalOrder())));    // null keys first
+triples.sort(Comparator.comparing(Triple<String, Integer, Boolean>::left).thenComparing(Triple::middle));
+```
+
+The rest of this README describes the library as it was released in 4.0.
+
 **Small Java beans that hold two, three or four values: a pair, a triple, a quattro, a key with a
 value, a list, a set or a map of values, a box for one value, and an enum that can carry a value it
 does not have yet.**
