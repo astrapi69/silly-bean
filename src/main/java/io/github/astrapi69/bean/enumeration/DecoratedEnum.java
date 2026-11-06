@@ -29,6 +29,11 @@ import java.util.Objects;
 /**
  * The class {@link DecoratedEnum} can decorate an enum with a new value that may be extended in a
  * future release.
+ *
+ * @param <E>
+ *            the type of the decorated enum
+ * @param <T>
+ *            the type of the value
  */
 public final class DecoratedEnum<E extends Enum<E>, T>
 {
@@ -46,6 +51,8 @@ public final class DecoratedEnum<E extends Enum<E>, T>
 	 *            the type of the enum
 	 * @param value
 	 *            the value
+	 * @throws NullPointerException
+	 *             if both the enum constant and the value are {@code null}
 	 */
 	public DecoratedEnum(final E enumtype, final T value)
 	{
@@ -57,6 +64,15 @@ public final class DecoratedEnum<E extends Enum<E>, T>
 		this.value = value;
 	}
 
+	/**
+	 * Returns a new builder for a {@link DecoratedEnum}.
+	 *
+	 * @param <E>
+	 *            the type of the decorated enum
+	 * @param <T>
+	 *            the type of the value
+	 * @return a new builder, with neither an enum constant nor a value set
+	 */
 	public static <E extends Enum<E>, T> DecoratedEnumBuilder<E, T> builder()
 	{
 		return new DecoratedEnumBuilder<E, T>();
@@ -78,11 +94,21 @@ public final class DecoratedEnum<E extends Enum<E>, T>
 		return value.toString();
 	}
 
+	/**
+	 * Returns the enum constant this object decorates.
+	 *
+	 * @return the enum constant, or {@code null} if this object holds a value alone
+	 */
 	public E getEnumtype()
 	{
 		return this.enumtype;
 	}
 
+	/**
+	 * Returns the value of this object.
+	 *
+	 * @return the value, or {@code null} if this object holds an enum constant alone
+	 */
 	public T getValue()
 	{
 		return this.value;
@@ -122,6 +148,14 @@ public final class DecoratedEnum<E extends Enum<E>, T>
 		return "DecoratedEnum(enumtype=" + this.getEnumtype() + ", value=" + this.getValue() + ")";
 	}
 
+	/**
+	 * Builds a {@link DecoratedEnum} from an enum constant, a value or both.
+	 *
+	 * @param <E>
+	 *            the type of the decorated enum
+	 * @param <T>
+	 *            the type of the value
+	 */
 	public static class DecoratedEnumBuilder<E extends Enum<E>, T>
 	{
 		private E enumtype;
@@ -131,18 +165,40 @@ public final class DecoratedEnum<E extends Enum<E>, T>
 		{
 		}
 
+		/**
+		 * Sets the enum constant of the {@link DecoratedEnum} to build.
+		 *
+		 * @param enumtype
+		 *            the enum constant
+		 * @return this builder
+		 */
 		public DecoratedEnumBuilder<E, T> enumtype(E enumtype)
 		{
 			this.enumtype = enumtype;
 			return this;
 		}
 
+		/**
+		 * Sets the value of the {@link DecoratedEnum} to build.
+		 *
+		 * @param value
+		 *            the value
+		 * @return this builder
+		 */
 		public DecoratedEnumBuilder<E, T> value(T value)
 		{
 			this.value = value;
 			return this;
 		}
 
+		/**
+		 * Builds a new {@link DecoratedEnum} from the enum constant and the value set on this
+		 * builder.
+		 *
+		 * @return the new {@link DecoratedEnum}
+		 * @throws NullPointerException
+		 *             if neither an enum constant nor a value was set
+		 */
 		public DecoratedEnum<E, T> build()
 		{
 			return new DecoratedEnum<>(enumtype, value);
