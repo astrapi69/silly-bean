@@ -27,12 +27,12 @@ package io.github.astrapi69.collection.pair;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.collection.set.SetFactory;
 import io.github.astrapi69.evaluate.object.evaluator.EqualsHashCodeAndToStringEvaluator;
 import io.github.astrapi69.test.object.Customer;
 import io.github.astrapi69.test.object.Employee;
@@ -55,14 +55,14 @@ public class KeySetPairTest
 		boolean expected;
 		boolean actual;
 		final Person person = Person.builder().name("John").married(Boolean.FALSE).build();
-		final Set<Employee> employees = SetFactory.newHashSet();
+		final Set<Employee> employees = new HashSet<>();
 		employees.add(Employee.builder().id("10").build());
 		employees.add(Employee.builder().id("20").build());
 		final Employee employee = Employee.builder().id("20").build();
 		final KeySetPair<Person, Employee> first = KeySetPair.<Person, Employee> builder()
 			.key(person).values(employees).value(employee).build();
 
-		final Set<Customer> customers = SetFactory.newHashSet();
+		final Set<Customer> customers = new HashSet<>();
 		final Customer customer = Customer.builder().name("jim").build();
 		final KeySetPair<Person, Customer> second = KeySetPair.<Person, Customer> builder()
 			.key(person).values(customers).value(customer).build();
@@ -88,7 +88,7 @@ public class KeySetPairTest
 	public void testKeyValuesPairWithSet()
 	{
 		final Person person = Person.builder().name("John").married(Boolean.FALSE).build();
-		final Set<Employee> employees = SetFactory.newHashSet();
+		final Set<Employee> employees = new HashSet<>();
 		employees.add(Employee.builder().id("10").build());
 		employees.add(Employee.builder().id("20").build());
 		final Employee employee = Employee.builder().id("20").build();
